@@ -82,7 +82,7 @@ void PewGame::Update(float deltaTime)
 			m_scene->Add(std::move(rock));
 		}
 
-		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, MEN::pi, MEN::Transform{{ 400, 300 }, 0, 5}, MEN::g_mManager.Get("ship.txt"));
+		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, MEN::pi, MEN::Transform{{ 400, 300 }, 0, 5}, MEN::g_mManager.Get("shipz.txt"));
 		player->m_tag = "Player";
 		player->m_game = this;
 		player->SetDamping(0.95f);

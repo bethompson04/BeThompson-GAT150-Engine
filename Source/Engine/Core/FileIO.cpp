@@ -1,5 +1,7 @@
 #include "FileIO.h"
 #include <fstream>
+#include <iostream>
+#include "Logger.h"
 
 namespace MEN
 {
@@ -21,6 +23,11 @@ namespace MEN
 		return std::filesystem::exists(filePath);
 	}
 
+	std::string getFilePath(const std::filesystem::path& path)
+	{
+		return path.filename().string();
+	}
+
 	bool getFileSize(const std::filesystem::path& filePath, size_t& fileSize)
 	{
 		std::error_code ec;
@@ -32,7 +39,12 @@ namespace MEN
 	bool readFile(const std::filesystem::path& filePath, std::string& buffer)
 	{
 
-		if (!fileExists(filePath)) return false;
+		if (!fileExists(filePath))
+		{
+			WARNING_LOG("file not loaded: " << filePath.string());
+			return false;
+		}
+
 
 		size_t size;
 		if (!getFileSize(filePath, size)) return false;

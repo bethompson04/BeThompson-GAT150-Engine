@@ -15,6 +15,7 @@
 #include <iostream>
 #include <vector>
 #include <thread>
+#include <cassert>
 
 using namespace std;
 
@@ -49,20 +50,23 @@ public:
 };
 
 // *================================================== MAIN
+
 int main(int argc, char* argv[])
 {
-	MEN::g_audioSystem.Initialize();
+	int* j = nullptr;
+	ASSERT_LOG(j, "pointer is null");
+
+	INFO_LOG("Start Successful!");
 
 	MEN::MemoryTracker::Initialize();
-
 	MEN::seedRandom((unsigned int)time(nullptr));
-
 	MEN::setFilePath("assets");
 
 	MEN::g_renderer.Initialize();
 	MEN::g_renderer.CreateWindow("CSC196", 800, 600);
 
 	MEN::g_inputSystem.Initialize();
+	MEN::g_audioSystem.Initialize();
 
 	unique_ptr<PewGame> game = make_unique<PewGame>();
 	game->Initialize();
@@ -86,7 +90,7 @@ int main(int argc, char* argv[])
 	while (!quit)
 	{
 //Timer
-		MEN::g_time.Tick();
+ 		MEN::g_time.Tick();
 
 //Input Checks
 		MEN::g_inputSystem.Update();
