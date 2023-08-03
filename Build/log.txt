@@ -1,1 +1,1 @@
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Game\BeThompson Game\Main.cpp(57) pointer is null
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Game\BeThompson Game\Main.cpp(60) Start Successful!
