@@ -1,6 +1,7 @@
 #pragma once
 #include "Core/Core.h"
 #include "Renderer/Model.h"
+#include "Components/Component.h"
 #include <memory>
 
 namespace MEN
@@ -18,6 +19,8 @@ namespace MEN
 
 		virtual void Update(float deltaTime);
 		virtual void Draw(MEN::Renderer& renderer);
+
+		void AddComponent(std::unique_ptr<Component> component);
 
 		float GetRadius() { return (m_model) ? m_model->getRadius() * m_Transform.scale : 0; }
 		virtual void OnCollision(Actor* other) {}
@@ -38,6 +41,7 @@ namespace MEN
 
 		bool m_destroyed = false;
 	protected:
+		std::vector<std::unique_ptr<Component>> m_components;
 
 		std::shared_ptr<Model> m_model;
 

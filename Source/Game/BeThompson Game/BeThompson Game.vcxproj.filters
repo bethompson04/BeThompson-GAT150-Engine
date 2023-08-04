@@ -5,6 +5,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source\Enemies">
+      <UniqueIdentifier>{4824fadd-beed-48a5-8e38-032204467bed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -13,30 +16,27 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="PewPew.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="PewGame.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="MultiShotEnemy.cpp">
+    <ClCompile Include="rock.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Boss.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="rock.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiShotEnemy.cpp">
+      <Filter>Source\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="PewPew.h">
@@ -45,14 +45,17 @@
     <ClInclude Include="PewGame.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Boss.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="MultiShotEnemy.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="rock.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Source\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Source\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiShotEnemy.h">
+      <Filter>Source\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

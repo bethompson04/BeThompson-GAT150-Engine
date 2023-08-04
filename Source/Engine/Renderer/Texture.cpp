@@ -11,7 +11,20 @@ namespace MEN
 		if (m_texture) SDL_DestroyTexture(m_texture);
 	}
 
-	bool Texture::Create(Renderer& renderer, const std::string& fileName)
+	bool Texture::Create(std::string fileName, ...)
+	{
+		va_list args;
+
+		va_start(args, fileName);
+
+		Renderer& renderer = va_arg(args, Renderer);
+
+		va_end(args);
+
+		return Load(fileName, renderer);
+	}
+
+	bool Texture::Load(const std::string& fileName, Renderer& renderer)
 	{
 		SDL_Surface* surface = IMG_Load(fileName.c_str());
 		if (!surface)

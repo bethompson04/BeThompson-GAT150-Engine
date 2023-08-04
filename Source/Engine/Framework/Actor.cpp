@@ -1,4 +1,5 @@
 #include "Actor.h"
+#include "Components/RenderComponent.h"
 
 namespace MEN
 {
@@ -17,7 +18,20 @@ namespace MEN
 
 	void Actor::Draw(MEN::Renderer& renderer)
 	{
-		m_model->Draw(renderer, m_Transform);
+		//m_model->Draw(renderer, m_Transform);
+		for (auto& component : m_components)
+		{
+			if (dynamic_cast<RenderComponent*>(component.get()))
+			{
+				dynamic_cast<RenderComponent*>(component.get())->Draw(renderer);
+			}
+		}
+	}
+
+	void Actor::AddComponent(std::unique_ptr<Component> component)
+	{
+		component->m_owner = this;
+		m_components.push_back(std::move(component));
 	}
 
 }

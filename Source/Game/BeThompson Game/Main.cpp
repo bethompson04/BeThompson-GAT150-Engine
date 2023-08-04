@@ -7,6 +7,8 @@
 #include "PewGame.h"
 #include "Renderer/Texture.h"
 
+#include "Framework/Resource/ResourceManager.h"
+
 #include "Framework/Emitter.h"
 #include "Renderer/ParticleSystem.h"
 
@@ -17,6 +19,8 @@
 #include <vector>
 #include <thread>
 #include <cassert>
+
+#include <array>
 
 using namespace std;
 
@@ -50,12 +54,12 @@ public:
 	MEN::Vector2 m_vel;
 };
 
+// *=================================================== FUNCTIONS
+
 // *================================================== MAIN
 
 int main(int argc, char* argv[])
 {
-	
-
 
 	INFO_LOG("Start Successful!");
 
@@ -69,8 +73,7 @@ int main(int argc, char* argv[])
 	MEN::g_inputSystem.Initialize();
 	MEN::g_audioSystem.Initialize();
 
-	shared_ptr<MEN::Texture> texture = make_shared<MEN::Texture>();
-	texture->Create(MEN::g_renderer, "bing.jpg");
+	
 
 	unique_ptr<PewGame> game = make_unique<PewGame>();
 	game->Initialize();
@@ -136,7 +139,7 @@ int main(int argc, char* argv[])
 		
 		MEN::g_particleSystem.Draw(MEN::g_renderer);
 		game->Draw(MEN::g_renderer);
-		MEN::g_renderer.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
+		//MEN::g_renderer.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
 
 		MEN::g_renderer.EndFrame();
 	}

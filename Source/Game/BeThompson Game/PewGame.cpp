@@ -10,6 +10,10 @@
 #include "Framework/Emitter.h"
 #include "Renderer/ParticleSystem.h"
 
+#include "Framework/Components/SpriteComponent.h"
+
+#include "Framework/Resource/ResourceManager.h"
+
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
@@ -17,18 +21,19 @@
 
 bool PewGame::Initialize()
 {
-	m_font = std::make_shared<MEN::Font>("ArcadeClassic.ttf", 25);
-	m_fontBig = std::make_shared<MEN::Font>("ArcadeClassic.ttf", 50);
+	//m_font = MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 25);
 
-	m_scoreText = std::make_unique<MEN::Text>(m_font);
+	//m_fontBig = MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 50);
 
-	m_livesText = std::make_unique<MEN::Text>(m_font);
+	m_scoreText = std::make_unique<MEN::Text>(MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 25));
+
+	m_livesText = std::make_unique<MEN::Text>(MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 25));
 	
 
-	m_titleText = std::make_unique<MEN::Text>(m_fontBig);
+	m_titleText = std::make_unique<MEN::Text>(MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 50));
 	m_titleText->Create(MEN::g_renderer, "UHHH BEN ASTEROID", MEN::Color{1, 1, 1, 1});
 	
-	m_gameOverText = std::make_unique<MEN::Text>(m_fontBig);
+	m_gameOverText = std::make_unique<MEN::Text>(MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 50));
 	m_gameOverText->Create(MEN::g_renderer, "GAMER OVER", MEN::Color{1, 1, 1, 1});
 
 	MEN::g_audioSystem.AddAudio("pew", "Pew.wav");
@@ -87,6 +92,10 @@ void PewGame::Update(float deltaTime)
 		player->m_game = this;
 		player->SetDamping(0.95f);
 		m_scene->Add(std::move(player));
+
+		std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
+		component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("bing.jpg", MEN::g_renderer);
+		player->AddComponent(std::move(component));
 
 		//m_health = player->m_health;
 
