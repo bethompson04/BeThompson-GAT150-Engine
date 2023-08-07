@@ -5,7 +5,7 @@
 class MultiShotEnemy : public Enemy
 {
 public:
-	MultiShotEnemy(float speed, float turnRate, const MEN::Transform& transform, const std::shared_ptr<MEN::Model> model) : Enemy{ speed, turnRate, transform, model }
+	MultiShotEnemy(float speed, float turnRate, const MEN::Transform& transform) : Enemy{ speed, turnRate, transform }
 	{
 		m_fireRate = 5.0f;
 		m_fireTimer = m_fireRate;

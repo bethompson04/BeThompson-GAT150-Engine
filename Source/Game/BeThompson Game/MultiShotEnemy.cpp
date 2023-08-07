@@ -29,17 +29,17 @@ void MultiShotEnemy::Update(float deltaTime)
 			if (m_fireTimer <= 0)
 			{
 				MEN::Transform transform{m_Transform.position, m_Transform.rotation, 1};
-				std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform, m_model);
+				std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform);
 				pewPew->m_tag = "Enemy_Bullet";
 				m_scene->Add(std::move(pewPew));
 
 				MEN::Transform transform2 {m_Transform.position, m_Transform.rotation + MEN::DegreesToRadians(20.0f), 1};
-				std::unique_ptr<PewPew> pewPew2 = std::make_unique<PewPew>("pew", 400.0f, transform2, m_model);
+				std::unique_ptr<PewPew> pewPew2 = std::make_unique<PewPew>("pew", 400.0f, transform2);
 				pewPew2->m_tag = "Enemy_Bullet";
 				m_scene->Add(std::move(pewPew2));
 
 				MEN::Transform transform3 {m_Transform.position, m_Transform.rotation - MEN::DegreesToRadians(20.0f), 1};
-				std::unique_ptr<PewPew> pewPew3 = std::make_unique<PewPew>("pew", 400.0f, transform3, m_model);
+				std::unique_ptr<PewPew> pewPew3 = std::make_unique<PewPew>("pew", 400.0f, transform3);
 				pewPew3->m_tag = "Enemy_Bullet";
 				m_scene->Add(std::move(pewPew3));
 

@@ -55,12 +55,12 @@ namespace MEN
 		vec2 size = texture->GetSize();
 
 		SDL_Rect dest;
-		dest.x = xPos;
-		dest.y = yPos;
-		dest.w = size.x;
-		dest.h = size.y;
+		dest.x = (int) (xPos - (size.x * 0.5));
+		dest.y = (int) (yPos - (size.y * 0.5));
+		dest.w = (int) size.x;
+		dest.h = (int) size.y;
 
-		SDL_RenderCopyEx(this->m_renderer, texture->m_texture, &dest, &dest, angle, NULL, SDL_FLIP_NONE);
+		SDL_RenderCopyEx(this->m_renderer, texture->m_texture, nullptr, &dest, angle, nullptr, SDL_FLIP_NONE);
 	}
 
 	void Renderer::DrawLine(int x1, int y1, int x2, int y2)

@@ -2,14 +2,17 @@
 #include "Core/Core.h"
 #include "Renderer.h"
 #include <vector>
+#include "Framework/Resource/Resource.h"
 
 namespace MEN
 {
-	class Model
+	class Model: public Resource
 	{
 	public:
 		Model() = default;
 		Model(const std::vector<vec2>& points) : m_points{ points } {}
+		
+		virtual bool Create(std::string fileName, ...) override;
 
 		bool Load(const std::string& fileName);
 		void Draw(Renderer& renderer, const vec2& position, float rotation, float scale);
@@ -21,5 +24,7 @@ namespace MEN
 		std::vector<vec2> m_points;
 		Color m_color;
 		float m_radius = 0;
+
+		// Inherited via Resource
 	};
 }

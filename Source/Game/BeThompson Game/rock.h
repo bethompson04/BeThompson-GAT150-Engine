@@ -4,8 +4,8 @@
 class Rock : public MEN::Actor
 {
 public:
-	Rock(float speed, const MEN::Transform& transform, const std::shared_ptr<MEN::Model> model) :
-		Actor(transform, model), m_speed{ speed }
+	Rock(float speed, const MEN::Transform& transform) :
+		Actor(transform), m_speed{ speed }
 	{
 	}
 

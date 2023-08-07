@@ -6,8 +6,10 @@
 class PewPew : public MEN::Actor
 {
 public:
-	PewPew(std::string pewSound, float speed, const MEN::Transform& transform, const std::shared_ptr<MEN::Model> model) :
-		Actor(transform, model), m_speed{ speed }, m_weaponSound{pewSound}
+	PewPew(std::string pewSound, float speed, const MEN::Transform& transform) :
+		m_weaponSound{ pewSound },
+		m_speed{ speed },
+		Actor(transform)
 	{
 		m_lifespan = 2.0f;
 	}

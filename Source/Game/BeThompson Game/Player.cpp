@@ -8,6 +8,11 @@
 #include "PewGame.h"
 #include "Renderer/ModelManager.h"
 #include "Audio/AudioSystem.h"
+#include "Framework/Components/SpriteComponent.h"
+#include "Renderer/Texture.h"
+#include "Framework/Resource/ResourceManager.h"
+
+#include "Framework/Components/EnginePhysicsComponent.h"
 
 void Player::Update(float deltaTime)
 {
@@ -24,7 +29,10 @@ void Player::Update(float deltaTime)
 	m_Transform.rotation += rotate * m_turnRate * MEN::g_time.GetDeltaTime();
 
 	MEN::vec2 forward = MEN::vec2{ 0 , -1 }.Rotate(m_Transform.rotation);
-	AddForce(forward * m_speed * thrust);
+
+	auto physicsComponent = GetComponent<MEN::EnginePhysicsComponent>();
+	physicsComponent->m_damping = 0.9f;
+	physicsComponent->ApplyForce(forward * m_speed * thrust);
 
 	m_Transform.position += forward * m_speed * thrust * MEN::g_time.GetDeltaTime();
 
@@ -84,38 +92,44 @@ void Player::Shoot(int score) {
 	emitter->m_lifespan = 0.1f;
 	m_scene->Add(std::move(emitter));
 
-	if(score >= 750 && score < 1500)
-	{
-		MEN::Transform transform2 {m_Transform.position, m_Transform.rotation + MEN::DegreesToRadians(20), 1};
-		std::unique_ptr<PewPew> pewPew2 = std::make_unique<PewPew>("pew", 400.0f, transform2, MEN::g_mManager.Get("Laser.txt"));
-		pewPew2->m_tag = "Player_Bullet";
-		m_scene->Add(std::move(pewPew2));
+	//if(score >= 750 && score < 1500)
+	//{
+	//	MEN::Transform transform2 {m_Transform.position, m_Transform.rotation + MEN::DegreesToRadians(20), 1};
+	//	std::unique_ptr<PewPew> pewPew2 = std::make_unique<PewPew>("pew", 400.0f, transform2);
+	//	pewPew2->m_tag = "Player_Bullet";
+	//	m_scene->Add(std::move(pewPew2));
 
-		MEN::Transform transform3 {m_Transform.position, m_Transform.rotation - MEN::DegreesToRadians(20), 1};
-		std::unique_ptr<PewPew> pewPew3 = std::make_unique<PewPew>("pew", 400.0f, transform3, MEN::g_mManager.Get("Laser.txt"));
-		pewPew3->m_tag = "Player_Bullet";
-		m_scene->Add(std::move(pewPew3));
-	}else if (score >= 1500)
-	{
+	//	MEN::Transform transform3 {m_Transform.position, m_Transform.rotation - MEN::DegreesToRadians(20), 1};
+	//	std::unique_ptr<PewPew> pewPew3 = std::make_unique<PewPew>("pew", 400.0f, transform3);
+	//	pewPew3->m_tag = "Player_Bullet";
+
+	//	m_scene->Add(std::move(pewPew3));
+	//}else if (score >= 1500)
+	//{
+	//	MEN::Transform transform1{ m_Transform.position, m_Transform.rotation, 1 };
+	//	std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform1);
+	//	pewPew->m_tag = "Player_Bullet";
+	//	m_scene->Add(std::move(pewPew));
+
+	//	MEN::Transform transform2 {m_Transform.position, m_Transform.rotation + MEN::DegreesToRadians(20), 1};
+	//	std::unique_ptr<PewPew> pewPew2 = std::make_unique<PewPew>("pew", 400.0f, transform2);
+	//	pewPew2->m_tag = "Player_Bullet";
+	//	m_scene->Add(std::move(pewPew2));
+
+	//	MEN::Transform transform3 {m_Transform.position, m_Transform.rotation - MEN::DegreesToRadians(20), 1};
+	//	std::unique_ptr<PewPew> pewPew3 = std::make_unique<PewPew>("pew", 400.0f, transform3);
+	//	pewPew3->m_tag = "Player_Bullet";
+	//	m_scene->Add(std::move(pewPew3));
+	//}else
+	//{
 		MEN::Transform transform1{ m_Transform.position, m_Transform.rotation, 1 };
-		std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform1, MEN::g_mManager.Get("Laser.txt"));
+		std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform1);
 		pewPew->m_tag = "Player_Bullet";
-		m_scene->Add(std::move(pewPew));
 
-		MEN::Transform transform2 {m_Transform.position, m_Transform.rotation + MEN::DegreesToRadians(20), 1};
-		std::unique_ptr<PewPew> pewPew2 = std::make_unique<PewPew>("pew", 400.0f, transform2, MEN::g_mManager.Get("Laser.txt"));
-		pewPew2->m_tag = "Player_Bullet";
-		m_scene->Add(std::move(pewPew2));
+		std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
+		component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.jpg", MEN::g_renderer);
+		pewPew->AddComponent(std::move(component));
 
-		MEN::Transform transform3 {m_Transform.position, m_Transform.rotation - MEN::DegreesToRadians(20), 1};
-		std::unique_ptr<PewPew> pewPew3 = std::make_unique<PewPew>("pew", 400.0f, transform3, MEN::g_mManager.Get("Laser.txt"));
-		pewPew3->m_tag = "Player_Bullet";
-		m_scene->Add(std::move(pewPew3));
-	}else
-	{
-		MEN::Transform transform1{ m_Transform.position, m_Transform.rotation, 1 };
-		std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform1, MEN::g_mManager.Get("Laser.txt"));
-		pewPew->m_tag = "Player_Bullet";
 		m_scene->Add(std::move(pewPew));
-	}
+	//}
 }

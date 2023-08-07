@@ -5,12 +5,13 @@ class Boss : public Enemy
 {
 public:
 
-	Boss(int HP, float speed, float turnRate, const MEN::Transform& transform, const std::shared_ptr<MEN::Model> model) :
-		Enemy{ speed, turnRate, transform, model }
+	Boss(int HP, float speed, float turnRate, const MEN::Transform& transform) :
+		Enemy{ speed, turnRate, transform }
 	{
 		m_fireRate = 1.0f;
 		m_fireTimer = m_fireRate;
 		hits = 0;;
+		hitsToDie = HP;
 	}
 
 	void Update(float deltaTime) override;
@@ -19,7 +20,7 @@ public:
 	int hits;
 
 private:
-	int hitsToDie;
+	int hitsToDie = 0;
 
 	float m_speed = 0;
 	float m_turnRate = 0;

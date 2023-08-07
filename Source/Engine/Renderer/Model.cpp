@@ -66,4 +66,8 @@ namespace MEN
 
 		return m_radius;
 	}
+	bool Model::Create(std::string fileName, ...)
+	{
+		return Load(fileName);
+	}
 }

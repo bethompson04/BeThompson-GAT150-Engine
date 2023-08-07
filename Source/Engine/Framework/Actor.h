@@ -10,8 +10,6 @@ namespace MEN
 	{
 	public:
 		Actor() = default;
-		Actor(const MEN::Transform transform, std::shared_ptr<Model> model) : m_Transform{ transform }, m_model{model}
-		{}
 
 		Actor(const Transform& transform) :
 			m_Transform{ transform }
@@ -22,11 +20,11 @@ namespace MEN
 
 		void AddComponent(std::unique_ptr<Component> component);
 
-		float GetRadius() { return (m_model) ? m_model->getRadius() * m_Transform.scale : 0; }
-		virtual void OnCollision(Actor* other) {}
+		template<typename T>
+		T* GetComponent();
 
-		void AddForce(const vec2 force) { m_velocity += force; }
-		void SetDamping(float damping) { m_damping = damping; }
+		float GetRadius() { return 30.0f; }
+		virtual void OnCollision(Actor* other) {}
 
 		friend class Scene;
 
@@ -42,10 +40,17 @@ namespace MEN
 		bool m_destroyed = false;
 	protected:
 		std::vector<std::unique_ptr<Component>> m_components;
-
-		std::shared_ptr<Model> m_model;
-
-		vec2 m_velocity;
-		float m_damping = 0;
 	};
+
+	template<typename T>
+	inline T* Actor::GetComponent()
+	{
+		for (auto& component : m_components)
+		{
+			T* result = dynamic_cast<T*>(component.get());
+			if (result) return result;
+		}
+
+		return nullptr;
+	}
 }

@@ -4,8 +4,10 @@
 class Enemy : public MEN::Actor
 {
 public:
-	Enemy(float speed, float turnRate, const MEN::Transform& transform, const std::shared_ptr<MEN::Model> model) :
-		Actor(transform, model), m_speed{ speed }, m_turnRate{ turnRate }
+	Enemy(float speed, float turnRate, const MEN::Transform& transform) :
+		Actor(transform),
+		m_speed{ speed },
+		m_turnRate{ turnRate }
 	{
 		m_fireRate = 2.0f;
 		m_fireTimer = m_fireRate;

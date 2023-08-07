@@ -11,8 +11,10 @@ namespace MEN
 			m_destroyed = (m_lifespan <= 0.0f);
 		}
 
-		m_Transform.position += m_velocity * deltaTime;
-		m_velocity *= std::pow(1 - m_damping, deltaTime);
+		for (auto& component : m_components)
+		{
+			component->Update(deltaTime);
+		}
 
 	}
 

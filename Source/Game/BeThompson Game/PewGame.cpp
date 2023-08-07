@@ -11,6 +11,7 @@
 #include "Renderer/ParticleSystem.h"
 
 #include "Framework/Components/SpriteComponent.h"
+#include "Framework/Components/EnginePhysicsComponent.h"
 
 #include "Framework/Resource/ResourceManager.h"
 
@@ -62,7 +63,7 @@ void PewGame::Update(float deltaTime)
 	case PewGame::eState::Title:
 		if (MEN::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE))
 		{
-			m_state = eState::StartGame;
+   			m_state = eState::StartGame;
 		}
 		break;
 	case PewGame::eState::StartGame:
@@ -81,21 +82,24 @@ void PewGame::Update(float deltaTime)
 
 		for (int i = 0; i < 3; i++)
 		{
-			std::unique_ptr<Rock> rock = std::make_unique<Rock>(10.0f, MEN::Transform{{MEN::random(800), MEN::random(900)}, 0, 5}, MEN::g_mManager.Get("rock.txt"));
+			std::unique_ptr<Rock> rock = std::make_unique<Rock>(10.0f, MEN::Transform{{MEN::random(800), MEN::random(900)}, 0, 5});
 			rock->m_tag = "Rock";
 			rock->m_game = this;
 			m_scene->Add(std::move(rock));
 		}
 
-		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, MEN::pi, MEN::Transform{{ 400, 300 }, 0, 5}, MEN::g_mManager.Get("ship.txt"));
+		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, MEN::pi, MEN::Transform{{ 400, 300 }, 0, 5});
 		player->m_tag = "Player";
 		player->m_game = this;
-		player->SetDamping(0.95f);
-		m_scene->Add(std::move(player));
 
 		std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-		component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("bing.jpg", MEN::g_renderer);
+		component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
 		player->AddComponent(std::move(component));
+
+		auto physicsComponent = std::make_unique<MEN::EnginePhysicsComponent>();
+		player->AddComponent(std::move(physicsComponent));
+
+		m_scene->Add(std::move(player));
 
 		//m_health = player->m_health;
 
@@ -118,13 +122,13 @@ void PewGame::Update(float deltaTime)
 			std::cout << choice << std::endl;
 			if (choice == 1 || choice == 2 || choice == 3)
 			{
-				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3}, MEN::g_mManager.Get("Enemy1.txt"));
+				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3});
 				enemy->m_tag = "Enemy";
 				enemy->m_game = this;
 				m_scene->Add(std::move(enemy));
 			}
 			else {
-				std::unique_ptr<MultiShotEnemy> enemy = std::make_unique<MultiShotEnemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3}, MEN::g_mManager.Get("MultiShotEnemy.txt"));
+				std::unique_ptr<MultiShotEnemy> enemy = std::make_unique<MultiShotEnemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3});
 				enemy->m_tag = "Enemy";
 				enemy->m_game = this;
 				m_scene->Add(std::move(enemy));
@@ -135,7 +139,7 @@ void PewGame::Update(float deltaTime)
 	{
 		if (!bossIsPresent)
 		{
-			std::unique_ptr<Boss> boss = std::make_unique<Boss>(10, MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3}, MEN::g_mManager.Get("Boss.txt"));
+			std::unique_ptr<Boss> boss = std::make_unique<Boss>(10, MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3});
 			boss->m_tag = "Enemy";
 			boss->m_game = this;
 			m_scene->Add(std::move(boss));

@@ -37,7 +37,7 @@ void Enemy::Update(float deltaTime)
 	if (m_fireTimer <= 0)
 	{
 		MEN::Transform transform{m_Transform.position, m_Transform.rotation, 1};
-		std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform, m_model);
+		std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform);
 		pewPew->m_tag = "Enemy_Bullet";
 		m_scene->Add(std::move(pewPew));
 		//Reset Timer
