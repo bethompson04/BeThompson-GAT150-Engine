@@ -1,4 +1,5 @@
 #include "rock.h"
+#include "Renderer/Renderer.h"
 
 void Rock::Update(float deltaTime)
 {

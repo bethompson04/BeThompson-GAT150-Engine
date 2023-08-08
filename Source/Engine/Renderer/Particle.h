@@ -1,11 +1,12 @@
 #pragma once
 #include "Core/Vector2.h"
 #include "Core/Color.h"
-#include "Renderer/Renderer.h"
 #include <vector>
 
 namespace MEN
 {
+    class Renderer;
+
     struct ParticleData
     {
         vec2 position;

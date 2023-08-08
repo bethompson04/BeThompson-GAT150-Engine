@@ -1,11 +1,12 @@
 #pragma once
 #include "Core/Core.h"
-#include "Renderer.h"
 #include <vector>
 #include "Framework/Resource/Resource.h"
 
 namespace MEN
 {
+	class Renderer;
+
 	class Model: public Resource
 	{
 	public:

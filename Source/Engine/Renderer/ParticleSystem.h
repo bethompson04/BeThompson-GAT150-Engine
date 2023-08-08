@@ -4,6 +4,8 @@
 
 namespace MEN
 {
+    class Renderer;
+
     class ParticleSystem
     {
     public:

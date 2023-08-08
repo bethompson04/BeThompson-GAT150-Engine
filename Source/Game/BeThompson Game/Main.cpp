@@ -1,16 +1,10 @@
 #include "Core/Core.h"
 #include "Renderer/Renderer.h"
-#include "Renderer/ModelManager.h"
+#include "Framework/Framework.h"
+
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"
-#include "Framework/Scene.h"
 #include "PewGame.h"
-#include "Renderer/Texture.h"
-
-#include "Framework/Resource/ResourceManager.h"
-
-#include "Framework/Emitter.h"
-#include "Renderer/ParticleSystem.h"
 
 #include "Player.h"
 #include "Enemy.h"
@@ -56,12 +50,21 @@ public:
 
 // *=================================================== FUNCTIONS
 
+class A { };
+class B : public A {};
+class C : public A {};
+
 // *================================================== MAIN
 
 int main(int argc, char* argv[])
 {
 
-	INFO_LOG("Start Successful!");
+
+	std::vector<A*> vec;
+	vec.push_back(new B);
+	vec.push_back(new C);
+
+	INFO_LOG("Initializing Engine.");
 
 	MEN::MemoryTracker::Initialize();
 	MEN::seedRandom((unsigned int)time(nullptr));

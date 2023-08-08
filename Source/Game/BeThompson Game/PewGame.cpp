@@ -5,20 +5,11 @@
 #include "Boss.h"
 #include "Rock.h"
 
-#include "Framework/Scene.h"
-
-#include "Framework/Emitter.h"
-#include "Renderer/ParticleSystem.h"
-
-#include "Framework/Components/SpriteComponent.h"
-#include "Framework/Components/EnginePhysicsComponent.h"
-
-#include "Framework/Resource/ResourceManager.h"
-
+#include "Framework/Framework.h"
+#include "Renderer/Renderer.h"
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
-#include "Renderer/Renderer.h"
-#include "Renderer/ModelManager.h"
+
 
 bool PewGame::Initialize()
 {

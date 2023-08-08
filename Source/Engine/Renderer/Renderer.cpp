@@ -1,5 +1,4 @@
 #include "Renderer.h"
-#include "Texture.h"
 #include "SDL2-2.28.0/include/SDL_ttf.h"
 #include "SDL2-2.28.0/include/SDL_image.h"
 
