@@ -11,6 +11,6 @@ namespace MEN
 
 	void SpriteComponent::Draw(Renderer& renderer)
 	{
-		renderer.DrawTexture(m_texture.get(), m_owner->m_Transform.position.x, m_owner->m_Transform.position.y, RadiansToDegrees(m_owner->m_Transform.rotation));
+		renderer.DrawTexture(m_texture.get(), m_owner->m_Transform);
 	}
 }

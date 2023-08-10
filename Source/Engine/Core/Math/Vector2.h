@@ -16,6 +16,11 @@ namespace MEN
 		Vector2(float valueX, float valueY) : x{ valueX }, y{ valueY } {}
 		Vector2(int valueX, int valueY) : x{ (float)valueX }, y{ (float)valueY } {}
 
+		float operator [] (size_t index) const { return (&x)[index]; }
+		float& operator [] (size_t index) { return (&x)[index]; }
+
+		Vector2 operator - () const { return Vector2(-x, -y); }
+
 		//Vector2 Add(const Vector2& vector) const { return Vector2(x + vector.x, y + vector.y); }
 		Vector2 operator + (const Vector2& vector) const { return Vector2(x + vector.x, y + vector.y); }
 		Vector2 operator - (const Vector2& vector) const { return Vector2(x - vector.x, y - vector.y); }

@@ -11,11 +11,18 @@ namespace MEN
 		float x, y, z;
 
 	public:
-		Vector3() : x{ 0 }, y{ 0 } {} //Initializes x and y to 0
-		Vector3(float value) : x{ value }, y{ value } {}
-		Vector3(float valueX, float valueY) : x{ valueX }, y{ valueY } {}
+		Vector3() : x{ 0 }, y{ 0 }, z{ 0 } {} //Initializes x and y to 0
+		Vector3(float value) : x{ value }, y{ value }, z{ value } {}
+		Vector3(float valueX, float valueY) : x{ valueX }, y{ valueY }, z{ 0 } {}
 		Vector3(float valueX, float valueY, float valueZ) : x{ valueX }, y{ valueY }, z{ valueZ } {}
-		Vector3(int valueX, int valueY) : x{ (float)valueX }, y{ (float)valueY } {}
+		Vector3(int valueX, int valueY) : x{ (float)valueX }, y{ (float)valueY }, z{ 0 } {}
+		Vector3(int valueX, int valueY, int valueZ) : x{ (float)valueX }, y{ (float)valueY }, z{ (float)valueZ} {}
+
+		float operator [] (size_t index) const { return (&x)[index]; }
+		float& operator [] (size_t index) { return (&x)[index]; }
+
+		Vector3 operator - () const { return Vector3(-x, -y, -z); }
+		//Vector3 Negate() const { return Vector3(-x, -y, -z); }
 
 		//Vector3 Add(const Vector3& vector) const { return Vector3(x + vector.x, y + vector.y); }
 		Vector3 operator + (const Vector3& vector) const { return Vector3(x + vector.x, y + vector.y, z + vector.z); }

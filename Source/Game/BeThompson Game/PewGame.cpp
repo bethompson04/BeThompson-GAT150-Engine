@@ -78,11 +78,12 @@ void PewGame::Update(float deltaTime)
 			rock->m_game = this;
 			m_scene->Add(std::move(rock));
 		}
-
-		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, MEN::pi, MEN::Transform{{ 400, 300 }, 0, 5});
+// Create Player
+		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, MEN::pi, MEN::Transform{{ 400, 300 }, 0, 1.5});
 		player->m_tag = "Player";
 		player->m_game = this;
 
+// Add Components
 		std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
 		component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
 		player->AddComponent(std::move(component));
@@ -113,16 +114,30 @@ void PewGame::Update(float deltaTime)
 			std::cout << choice << std::endl;
 			if (choice == 1 || choice == 2 || choice == 3)
 			{
-				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3});
+				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 1});
 				enemy->m_tag = "Enemy";
 				enemy->m_game = this;
+
+				std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
+				component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
+				enemy->AddComponent(std::move(component));
+
 				m_scene->Add(std::move(enemy));
+
+				
 			}
 			else {
-				std::unique_ptr<MultiShotEnemy> enemy = std::make_unique<MultiShotEnemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3});
+				std::unique_ptr<MultiShotEnemy> enemy = std::make_unique<MultiShotEnemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 1});
 				enemy->m_tag = "Enemy";
 				enemy->m_game = this;
+
+				std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
+				component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
+				enemy->AddComponent(std::move(component));
+
 				m_scene->Add(std::move(enemy));
+
+				
 			}
 		}
 		break;
