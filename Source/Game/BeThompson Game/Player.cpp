@@ -12,7 +12,29 @@
 #include "Renderer/Texture.h"
 #include "Framework/Resource/ResourceManager.h"
 
-#include "Framework/Components/EnginePhysicsComponent.h"
+#include "Framework/Framework.h"
+
+bool Player::Initialize()
+{
+	Actor::Initialize();
+
+	// cache off
+	m_physicsComponent = GetComponent<MEN::PhysicsComponent>();
+
+	auto collisionComponent = GetComponent<MEN::CollisionComponent>();
+	if (collisionComponent)
+	{
+		auto renderComponent = GetComponent<MEN::RenderComponent>();
+		if (renderComponent)
+		{
+			float scale = m_Transform.scale;
+			collisionComponent->m_radius = renderComponent->GetRadius() * scale * 0.75f;
+
+		}
+	}
+
+	return true;
+}
 
 void Player::Update(float deltaTime)
 {
@@ -30,9 +52,8 @@ void Player::Update(float deltaTime)
 
 	MEN::vec2 forward = MEN::vec2{ 0 , -1 }.Rotate(m_Transform.rotation);
 
-	auto physicsComponent = GetComponent<MEN::EnginePhysicsComponent>();
-	physicsComponent->m_damping = 0.9f;
-	physicsComponent->ApplyForce(forward * m_speed * thrust);
+
+	m_physicsComponent->ApplyForce(forward * m_speed * thrust);
 
 	m_Transform.position += forward * m_speed * thrust * MEN::g_time.GetDeltaTime();
 
@@ -104,6 +125,10 @@ void Player::Shoot(int score) {
 		component2->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.png", MEN::g_renderer);
 		pewPew2->AddComponent(std::move(component2));
 
+		auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+		collisionComponent->m_radius = 30.0f;
+		pewPew2->AddComponent(std::move(collisionComponent));
+
 		m_scene->Add(std::move(pewPew2));
 
 		MEN::Transform transform3 {m_Transform.position, m_Transform.rotation - MEN::DegreesToRadians(20), 1};
@@ -112,7 +137,12 @@ void Player::Shoot(int score) {
 
 		std::unique_ptr<MEN::SpriteComponent> component3 = std::make_unique<MEN::SpriteComponent>();
 		component3->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.png", MEN::g_renderer);
+		
+
+		auto collisionComponent2 = std::make_unique<MEN::CircleCollisionComponent>();
+		collisionComponent2->m_radius = 30.0f;
 		pewPew3->AddComponent(std::move(component3));
+		pewPew3->AddComponent(std::move(collisionComponent2));
 
 		m_scene->Add(std::move(pewPew3));
 	}else if (score >= 1500)
@@ -125,6 +155,11 @@ void Player::Shoot(int score) {
 		component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.png", MEN::g_renderer);
 
 		pewPew->AddComponent(std::move(component));
+
+		auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+		collisionComponent->m_radius = 30.0f;
+		pewPew->AddComponent(std::move(collisionComponent));
+
 		m_scene->Add(std::move(pewPew));
 
 		MEN::Transform transform2 {m_Transform.position, m_Transform.rotation + MEN::DegreesToRadians(20), 1};
@@ -135,6 +170,11 @@ void Player::Shoot(int score) {
 		component2->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.png", MEN::g_renderer);
 
 		pewPew2->AddComponent(std::move(component2));
+
+		auto collisionComponent2 = std::make_unique<MEN::CircleCollisionComponent>();
+		collisionComponent2->m_radius = 30.0f;
+		pewPew2->AddComponent(std::move(collisionComponent2));
+
 		m_scene->Add(std::move(pewPew2));
 
 		MEN::Transform transform3 {m_Transform.position, m_Transform.rotation - MEN::DegreesToRadians(20), 1};
@@ -143,8 +183,12 @@ void Player::Shoot(int score) {
 
 		std::unique_ptr<MEN::SpriteComponent> component3 = std::make_unique<MEN::SpriteComponent>();
 		component3->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.png", MEN::g_renderer);
-
 		pewPew3->AddComponent(std::move(component3));
+
+		auto collisionComponent3 = std::make_unique<MEN::CircleCollisionComponent>();
+		collisionComponent3->m_radius = 30.0f;
+		pewPew3->AddComponent(std::move(collisionComponent3));
+
 		m_scene->Add(std::move(pewPew3));
 	}else
 	{
@@ -154,8 +198,11 @@ void Player::Shoot(int score) {
 
 		std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
 		component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.png", MEN::g_renderer);
-
 		pewPew->AddComponent(std::move(component));
+
+		auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+		collisionComponent->m_radius = 30.0f;
+		pewPew->AddComponent(std::move(collisionComponent));
 
 		m_scene->Add(std::move(pewPew));
 	}

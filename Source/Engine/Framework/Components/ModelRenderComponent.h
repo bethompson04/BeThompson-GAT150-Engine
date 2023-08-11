@@ -11,6 +11,8 @@ namespace MEN
 		void Update(float deltaTime) override;
 		void Draw(class Renderer& renderer) override;
 
+		virtual float GetRadius() override { return m_model->getRadius(); }
+
 	public:
 		res_t<Model> m_model;
 	};

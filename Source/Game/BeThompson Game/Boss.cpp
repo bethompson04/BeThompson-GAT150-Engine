@@ -7,6 +7,7 @@
 #include "Framework/Emitter.h"
 #include "Renderer/ModelManager.h"
 #include "PewGame.h"
+#include "Framework/Framework.h"
 
 void Boss::Update(float deltaTime)
 {
@@ -29,20 +30,50 @@ void Boss::Update(float deltaTime)
 		{
 			if (m_fireTimer <= 0)
 			{
-				//MEN::Transform transform{m_Transform.position, m_Transform.rotation, 1};
-				//std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform, MEN::g_mManager.Get("BossLaser.txt"));
-				//pewPew->m_tag = "Enemy_Bullet";
-				//m_scene->Add(std::move(pewPew));
+				MEN::Transform transform{m_Transform.position, m_Transform.rotation, 1};
+				std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform);
+				pewPew->m_tag = "Enemy_Bullet";
 
-				//MEN::Transform transform2 {m_Transform.position, m_Transform.rotation + MEN::DegreesToRadians(20), 1};
-				//std::unique_ptr<PewPew> pewPew2 = std::make_unique<PewPew>("pew", 400.0f, transform2, MEN::g_mManager.Get("BossLaser.txt"));
-				//pewPew2->m_tag = "Enemy_Bullet";
-				//m_scene->Add(std::move(pewPew2));
+				std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
+				component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.png", MEN::g_renderer);
 
-				//MEN::Transform transform3 {m_Transform.position, m_Transform.rotation - MEN::DegreesToRadians(20), 1};
-				//std::unique_ptr<PewPew> pewPew3 = std::make_unique<PewPew>("pew", 400.0f, transform3, MEN::g_mManager.Get("BossLaser.txt"));
-				//pewPew3->m_tag = "Enemy_Bullet";
-				//m_scene->Add(std::move(pewPew3));
+				pewPew->AddComponent(std::move(component));
+
+				auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+				collisionComponent->m_radius = 30.0f;
+				pewPew->AddComponent(std::move(collisionComponent));
+
+				m_scene->Add(std::move(pewPew));
+
+				MEN::Transform transform2 {m_Transform.position, m_Transform.rotation + MEN::DegreesToRadians(20.0f), 1};
+				std::unique_ptr<PewPew> pewPew2 = std::make_unique<PewPew>("pew", 400.0f, transform2);
+				pewPew2->m_tag = "Enemy_Bullet";
+
+				std::unique_ptr<MEN::SpriteComponent> component2 = std::make_unique<MEN::SpriteComponent>();
+				component2->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.png", MEN::g_renderer);
+
+				pewPew2->AddComponent(std::move(component2));
+
+				auto collisionComponent2 = std::make_unique<MEN::CircleCollisionComponent>();
+				collisionComponent2->m_radius = 30.0f;
+				pewPew2->AddComponent(std::move(collisionComponent2));
+
+				m_scene->Add(std::move(pewPew2));
+
+				MEN::Transform transform3 {m_Transform.position, m_Transform.rotation - MEN::DegreesToRadians(20.0f), 1};
+				std::unique_ptr<PewPew> pewPew3 = std::make_unique<PewPew>("pew", 400.0f, transform3);
+				pewPew3->m_tag = "Enemy_Bullet";
+
+				std::unique_ptr<MEN::SpriteComponent> component3 = std::make_unique<MEN::SpriteComponent>();
+				component3->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.png", MEN::g_renderer);
+
+				pewPew3->AddComponent(std::move(component3));
+
+				auto collisionComponent3 = std::make_unique<MEN::CircleCollisionComponent>();
+				collisionComponent3->m_radius = 30.0f;
+				pewPew3->AddComponent(std::move(collisionComponent3));
+
+				m_scene->Add(std::move(pewPew3));
 
 				//Reset Timer
 				m_fireTimer = m_fireRate;

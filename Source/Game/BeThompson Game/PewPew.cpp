@@ -1,5 +1,22 @@
 #include "PewPew.h"
 #include "Renderer/Renderer.h"
+#include "Framework/Framework.h"
+
+bool PewPew::Initialize()
+{
+	auto collisionComponent = GetComponent<MEN::CollisionComponent>();
+	if (collisionComponent)
+	{
+		auto renderComponent = GetComponent<MEN::RenderComponent>();
+		if (renderComponent)
+		{
+			float scale = m_Transform.scale;
+			collisionComponent->m_radius = renderComponent->GetRadius() * scale;
+
+		}
+	}
+	return true;
+}
 
 void PewPew::Update(float deltaTime)
 {

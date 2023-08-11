@@ -13,6 +13,7 @@ public:
 	{
 		m_lifespan = 2.0f;
 	}
+	bool Initialize() override;
 
 	void Update(float deltaTime) override;
 	void OnCollision(Actor* other) override;

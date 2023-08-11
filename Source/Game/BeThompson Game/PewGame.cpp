@@ -83,17 +83,20 @@ void PewGame::Update(float deltaTime)
 		player->m_tag = "Player";
 		player->m_game = this;
 
-// Add Components
-		std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-		component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
-		player->AddComponent(std::move(component));
+	// Add Components
+		auto renderComponent = std::make_unique<MEN::SpriteComponent>();
+		renderComponent->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
+		player->AddComponent(std::move(renderComponent));
 
 		auto physicsComponent = std::make_unique<MEN::EnginePhysicsComponent>();
 		player->AddComponent(std::move(physicsComponent));
 
-		m_scene->Add(std::move(player));
+		auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+		collisionComponent->m_radius = 30.0f;
+		player->AddComponent(std::move(collisionComponent));
 
-		//m_health = player->m_health;
+		player->Initialize();
+		m_scene->Add(std::move(player));
 
 		m_state = eState::Game;
 	}
@@ -108,12 +111,13 @@ void PewGame::Update(float deltaTime)
 		m_spawnTimer += deltaTime;
 		if (m_spawnTimer >= m_spawnTime)
 		{
-			// Reset spawn timer and randomize which enemy type spawns (~75% normal, ~25% multishot)
+// Reset spawn timer and randomize which enemy type spawns (~75% normal, ~25% multishot)
 			m_spawnTimer = 0;
 			int choice = MEN::random(4);
 			std::cout << choice << std::endl;
 			if (choice == 1 || choice == 2 || choice == 3)
 			{
+// Create Enemy 1
 				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 1});
 				enemy->m_tag = "Enemy";
 				enemy->m_game = this;
@@ -122,11 +126,17 @@ void PewGame::Update(float deltaTime)
 				component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
 				enemy->AddComponent(std::move(component));
 
+				auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+				collisionComponent->m_radius = 30.0f;
+				enemy->AddComponent(std::move(collisionComponent));
+
+				enemy->Initialize();
 				m_scene->Add(std::move(enemy));
 
 				
 			}
 			else {
+// Create Enemy 2
 				std::unique_ptr<MultiShotEnemy> enemy = std::make_unique<MultiShotEnemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 1});
 				enemy->m_tag = "Enemy";
 				enemy->m_game = this;
@@ -135,6 +145,11 @@ void PewGame::Update(float deltaTime)
 				component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
 				enemy->AddComponent(std::move(component));
 
+				auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+				collisionComponent->m_radius = 30.0f;
+				enemy->AddComponent(std::move(collisionComponent));
+
+				enemy->Initialize();
 				m_scene->Add(std::move(enemy));
 
 				
@@ -145,10 +160,22 @@ void PewGame::Update(float deltaTime)
 	{
 		if (!bossIsPresent)
 		{
+// Create Boss
 			std::unique_ptr<Boss> boss = std::make_unique<Boss>(10, MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3});
 			boss->m_tag = "Enemy";
 			boss->m_game = this;
+
+			std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
+			component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
+			boss->AddComponent(std::move(component));
+
+			auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+			collisionComponent->m_radius = 30.0f;
+			boss->AddComponent(std::move(collisionComponent));
+
+			boss->Initialize();
 			m_scene->Add(std::move(boss));
+
 			bossIsPresent = true;
 			std::cout << "Boss Spawned!" << std::endl;
 		}

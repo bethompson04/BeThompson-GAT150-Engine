@@ -5,6 +5,25 @@
 #include "PewPew.h"
 #include "PewGame.h"
 #include "Framework/Emitter.h"
+#include "Framework/Framework.h"
+
+bool Enemy::Initialize()
+{
+	Actor::Initialize();
+
+	auto collisionComponent = GetComponent<MEN::CollisionComponent>();
+	if (collisionComponent)
+	{
+		auto renderComponent = GetComponent<MEN::RenderComponent>();
+		if (renderComponent)
+		{
+			float scale = m_Transform.scale;
+			collisionComponent->m_radius = renderComponent->GetRadius() * scale;
+
+		}
+	}
+	return true;
+}
 
 void Enemy::Update(float deltaTime)
 {
@@ -39,6 +58,16 @@ void Enemy::Update(float deltaTime)
 		MEN::Transform transform{m_Transform.position, m_Transform.rotation, 1};
 		std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, transform);
 		pewPew->m_tag = "Enemy_Bullet";
+
+		std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
+		component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("rocket.png", MEN::g_renderer);
+
+		pewPew->AddComponent(std::move(component));
+
+		auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+		collisionComponent->m_radius = 30.0f;
+		pewPew->AddComponent(std::move(collisionComponent));
+
 		m_scene->Add(std::move(pewPew));
 		//Reset Timer
 		m_fireTimer = m_fireRate;

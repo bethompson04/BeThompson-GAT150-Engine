@@ -2,11 +2,12 @@
 #include "Core/Core.h"
 #include "Renderer/Model.h"
 #include "Components/Component.h"
+#include "Framework/Object.h"
 #include <memory>
 
 namespace MEN
 {
-	class Actor
+	class Actor : public Object
 	{
 	public:
 		Actor() = default;
@@ -14,6 +15,9 @@ namespace MEN
 		Actor(const Transform& transform) :
 			m_Transform{ transform }
 		{}
+
+		virtual bool Initialize() override;
+		virtual void OnDestroy() override;
 
 		virtual void Update(float deltaTime);
 		virtual void Draw(MEN::Renderer& renderer);
