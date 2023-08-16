@@ -3,8 +3,6 @@
 #include "FileIO.h"
 namespace MEN
 {
-	Logger g_logger(LogLevel::Info, &std::cout, "log.txt");
-
 	bool Logger::Log(LogLevel logLevel, const std::string& fileName, int line)
 	{
 		if (logLevel < m_logLevel) return false;

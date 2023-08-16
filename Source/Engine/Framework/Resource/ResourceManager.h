@@ -1,12 +1,15 @@
 #pragma once
 #include "Resource.h"
+#include "Framework/Singleton.h"
 #include <map>
 #include <memory>
 #include <string>
 
+#define GET_RESOURCE(type, fileName, ...) MEN::ResourceManager::Instance().Get<type>(fileName, __VA_ARGS__)
+
 namespace MEN
 {
-	class ResourceManager
+	class ResourceManager : public Singleton<ResourceManager>
 	{
 
 	public:
@@ -33,5 +36,4 @@ namespace MEN
 		return resource;
 	}
 
-	extern ResourceManager g_resourceManager;
 }

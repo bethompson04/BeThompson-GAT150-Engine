@@ -3,9 +3,11 @@
 
 namespace MEN
 {
+	CLASS_DEFINITION(EnginePhysicsComponent)
+
 	void EnginePhysicsComponent::Update(float deltaTime)
 	{
-		m_owner->m_Transform.position += m_velocity * deltaTime;
+		m_owner->transform.position += m_velocity * deltaTime;
 		m_velocity *= std::pow(1 - m_damping, deltaTime);
 	}
 

@@ -42,7 +42,6 @@ public:
 	{
 		renderer.DrawPoint(m_pos.x, m_pos.y);
 	}
-
 public:
 	MEN::Vector2 m_pos;
 	MEN::Vector2 m_vel;
@@ -50,9 +49,27 @@ public:
 
 // *=================================================== FUNCTIONS
 
-class A { };
-class B : public A {};
-class C : public A {};
+//class A
+//{
+//public:
+//	virtual void print() { cout << "A\n"; }
+//};
+//class B : public A
+//{
+//	void print() override { cout << "B\n"; }
+//};
+//class C : public A
+//{
+//	void print() override { cout << "C\n"; }
+//};
+//
+//A* Create(const std::string& name)
+//{
+//	if (name == "B") return new B();
+//	if (name == "C") return new C();
+//
+//	return nullptr;
+//}
 
 // *================================================== MAIN
 
@@ -60,9 +77,8 @@ int main(int argc, char* argv[])
 {
 
 
-	std::vector<A*> vec;
-	vec.push_back(new B);
-	vec.push_back(new C);
+	MEN::Factory::Instance().Register<MEN::SpriteComponent>("SpriteComponent");
+
 
 	INFO_LOG("Initializing Engine.");
 
@@ -76,7 +92,35 @@ int main(int argc, char* argv[])
 	MEN::g_inputSystem.Initialize();
 	MEN::g_audioSystem.Initialize();
 
-	
+	// --
+
+	MEN::MemoryTracker::Initialize();
+	MEN::seedRandom((unsigned int)time(nullptr));
+	MEN::setFilePath("assets");
+	rapidjson::Document document;
+	MEN::Json::Load("json.txt", document);
+	int i1;
+	MEN::Json::Read(document, "integer1", i1);
+	std::cout << i1 << std::endl;
+	int i2;
+	MEN::Json::Read(document, "integer2", i2);
+	std::cout << i2 << std::endl;
+
+	std::string str;
+	MEN::Json::Read(document, "string", str);
+	std::cout << str << std::endl;
+
+	bool b;
+	MEN::Json::Read(document, "boolean", b);
+	std::cout << b << std::endl;
+
+	float f;
+	MEN::Json::Read(document, "float", f);
+	std::cout << f << std::endl;
+
+	MEN::vec2 v2;
+	MEN::Json::Read(document, "vector2", v2, true);
+	std::cout << v2 << std::endl;
 
 	unique_ptr<PewGame> game = make_unique<PewGame>();
 	game->Initialize();

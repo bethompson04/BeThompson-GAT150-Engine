@@ -5,6 +5,8 @@
 #include "Boss.h"
 #include "Rock.h"
 
+#include "Core/Core.h"
+
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
 #include "Audio/AudioSystem.h"
@@ -17,15 +19,15 @@ bool PewGame::Initialize()
 
 	//m_fontBig = MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 50);
 
-	m_scoreText = std::make_unique<MEN::Text>(MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 25));
+	m_scoreText = std::make_unique<MEN::Text>(GET_RESOURCE(MEN::Font, "ArcadeClassic.ttf", 25));
 
-	m_livesText = std::make_unique<MEN::Text>(MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 25));
+	m_livesText = std::make_unique<MEN::Text>(GET_RESOURCE(MEN::Font, "ArcadeClassic.ttf", 25));
 	
 
-	m_titleText = std::make_unique<MEN::Text>(MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 50));
+	m_titleText = std::make_unique<MEN::Text>(GET_RESOURCE(MEN::Font,"ArcadeClassic.ttf", 50));
 	m_titleText->Create(MEN::g_renderer, "UHHH BEN ASTEROID", MEN::Color{1, 1, 1, 1});
 	
-	m_gameOverText = std::make_unique<MEN::Text>(MEN::g_resourceManager.Get<MEN::Font>("ArcadeClassic.ttf", 50));
+	m_gameOverText = std::make_unique<MEN::Text>(GET_RESOURCE(MEN::Font, "ArcadeClassic.ttf", 50));
 	m_gameOverText->Create(MEN::g_renderer, "GAMER OVER", MEN::Color{1, 1, 1, 1});
 
 	MEN::g_audioSystem.AddAudio("pew", "Pew.wav");
@@ -38,7 +40,7 @@ bool PewGame::Initialize()
 	// music by joshuaempyre on freesound.org
 	MEN::g_audioSystem.PlayOneShot("music", true);
 
-	
+
 
 	return false;
 }
@@ -74,24 +76,24 @@ void PewGame::Update(float deltaTime)
 		for (int i = 0; i < 3; i++)
 		{
 			std::unique_ptr<Rock> rock = std::make_unique<Rock>(10.0f, MEN::Transform{{MEN::random(800), MEN::random(900)}, 0, 5});
-			rock->m_tag = "Rock";
+			rock->tag = "Rock";
 			rock->m_game = this;
 			m_scene->Add(std::move(rock));
 		}
 // Create Player
 		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, MEN::pi, MEN::Transform{{ 400, 300 }, 0, 1.5});
-		player->m_tag = "Player";
+		player->tag = "Player";
 		player->m_game = this;
 
 	// Add Components
-		auto renderComponent = std::make_unique<MEN::SpriteComponent>();
-		renderComponent->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
+		auto renderComponent = CREATE_CLASS(SpriteComponent);
+		renderComponent->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
 		player->AddComponent(std::move(renderComponent));
 
-		auto physicsComponent = std::make_unique<MEN::EnginePhysicsComponent>();
+		auto physicsComponent = CREATE_CLASS(EnginePhysicsComponent);
 		player->AddComponent(std::move(physicsComponent));
 
-		auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+		auto collisionComponent = CREATE_CLASS(CircleCollisionComponent);
 		collisionComponent->m_radius = 30.0f;
 		player->AddComponent(std::move(collisionComponent));
 
@@ -119,11 +121,11 @@ void PewGame::Update(float deltaTime)
 			{
 // Create Enemy 1
 				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 1});
-				enemy->m_tag = "Enemy";
+				enemy->tag = "Enemy";
 				enemy->m_game = this;
 
 				std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-				component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
+				component->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
 				enemy->AddComponent(std::move(component));
 
 				auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
@@ -138,11 +140,11 @@ void PewGame::Update(float deltaTime)
 			else {
 // Create Enemy 2
 				std::unique_ptr<MultiShotEnemy> enemy = std::make_unique<MultiShotEnemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 1});
-				enemy->m_tag = "Enemy";
+				enemy->tag = "Enemy";
 				enemy->m_game = this;
 
 				std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-				component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
+				component->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
 				enemy->AddComponent(std::move(component));
 
 				auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
@@ -162,11 +164,11 @@ void PewGame::Update(float deltaTime)
 		{
 // Create Boss
 			std::unique_ptr<Boss> boss = std::make_unique<Boss>(10, MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3});
-			boss->m_tag = "Enemy";
+			boss->tag = "Enemy";
 			boss->m_game = this;
 
 			std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-			component->m_texture = MEN::g_resourceManager.Get<MEN::Texture>("ship.png", MEN::g_renderer);
+			component->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
 			boss->AddComponent(std::move(component));
 
 			auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();

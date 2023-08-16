@@ -12,6 +12,6 @@ namespace MEN
 		friend class Actor;
 
 	public:
-		Actor* m_owner = nullptr;
+		class Actor* m_owner = nullptr;
 	};
 }

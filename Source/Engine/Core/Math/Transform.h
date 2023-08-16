@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector2.h"
 #include "Matrix3x3.h"
+#include "Core/Json.h"
 
 namespace MEN
 {
@@ -29,6 +30,6 @@ namespace MEN
 			return mt * ms * mr;
 		}
 
-
+		void Read(const json_t& value);
 	};
 }

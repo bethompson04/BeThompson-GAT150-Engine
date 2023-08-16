@@ -1,14 +1,16 @@
 #pragma once
+#include "Framework/Singleton.h"
 #include <string>
 #include <cassert>
 #include <fstream>
+#include <iostream>
 
 #ifdef _DEBUG
 
-#define INFO_LOG(message)               { if (MEN::g_logger.Log(MEN::LogLevel::Info, __FILE__, __LINE__))    { MEN::g_logger << message << "\n"; }}
-#define WARNING_LOG(message)            { if (MEN::g_logger.Log(MEN::LogLevel::Warning, __FILE__, __LINE__)) { MEN::g_logger << message << "\n"; }}
-#define ERROR_LOG(message)              { if (MEN::g_logger.Log(MEN::LogLevel::Error, __FILE__, __LINE__))   { MEN::g_logger << message << "\n"; }}
-#define ASSERT_LOG(condition, message)  { if(!condition && MEN::g_logger.Log(MEN::LogLevel::Assert, __FILE__, __LINE__))   { MEN::g_logger << message << "\n"; } assert(condition);}
+#define INFO_LOG(message)               { if (MEN::Logger::Instance().Log(MEN::LogLevel::Info, __FILE__, __LINE__))    { MEN::Logger::Instance() << message << "\n"; }}
+#define WARNING_LOG(message)            { if (MEN::Logger::Instance().Log(MEN::LogLevel::Warning, __FILE__, __LINE__)) { MEN::Logger::Instance() << message << "\n"; }}
+#define ERROR_LOG(message)              { if (MEN::Logger::Instance().Log(MEN::LogLevel::Error, __FILE__, __LINE__))   { MEN::Logger::Instance() << message << "\n"; }}
+#define ASSERT_LOG(condition, message)  { if(!condition && MEN::Logger::Instance().Log(MEN::LogLevel::Assert, __FILE__, __LINE__))   { MEN::Logger::Instance() << message << "\n"; } assert(condition);}
 
 #else
 #define INFO_LOG(message)               {}
@@ -29,10 +31,10 @@ namespace MEN
 		Assert
 	};
 
-	class Logger
+	class Logger : public Singleton<Logger>
 	{
 	public:
-		Logger(LogLevel logLevel, std::ostream* ostream, const std::string fileName = "") :
+		Logger(LogLevel logLevel = LogLevel::Info, std::ostream* ostream = &std::cout, const std::string fileName = "log.txt") :
 			m_logLevel{logLevel},
 			m_ostream{ ostream }
 		{
@@ -44,13 +46,13 @@ namespace MEN
 		template<typename T>
 		Logger& operator << (T value);
 
+	protected:
+
 	private:
 		LogLevel m_logLevel;
 		std::ostream* m_ostream = nullptr;
 		std::ofstream m_fstream;
 	};
-
-	extern Logger g_logger;
 
 
 

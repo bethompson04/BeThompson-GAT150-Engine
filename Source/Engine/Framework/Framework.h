@@ -20,3 +20,5 @@
 
 #include "Components/CollisionComponent.h"
 #include "Components/CircleCollisionComponent.h"
+
+#include "Factory.h"

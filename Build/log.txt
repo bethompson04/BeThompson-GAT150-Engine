@@ -1,1 +1,7 @@
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Game\BeThompson Game\Main.cpp(67) Initializing Engine.
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(52) Class Registered: SpriteComponent
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(52) Class Registered: ModelRenderComponent
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(52) Class Registered: EnginePhysicsComponent
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(52) Class Registered: CircleCollisionComponent
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(52) Class Registered: Actor
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(52) Class Registered: SpriteComponent
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Game\BeThompson Game\Main.cpp(83) Initializing Engine.

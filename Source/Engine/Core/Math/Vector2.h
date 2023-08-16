@@ -100,5 +100,11 @@ namespace MEN
 		return stream;
 	}
 
+	inline std::ostream& operator<<(std::ostream& stream, const Vector2& v)
+	{
+		stream << v.x << " " << v.y;
+
+		return stream;
+	}
 	using vec2 = Vector2;
 }

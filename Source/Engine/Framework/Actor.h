@@ -10,10 +10,12 @@ namespace MEN
 	class Actor : public Object
 	{
 	public:
+		CLASS_DECLARATION(Actor)
+
 		Actor() = default;
 
 		Actor(const Transform& transform) :
-			m_Transform{ transform }
+			transform{ transform }
 		{}
 
 		virtual bool Initialize() override;
@@ -36,20 +38,20 @@ namespace MEN
 
 		class Game* m_game = nullptr;
 
-		MEN::Transform m_Transform;
-		std::string m_tag;
+		MEN::Transform transform;
+		std::string tag;
 
-		float m_lifespan = -1.0f;
+		float lifespan = -1.0f;
 
 		bool m_destroyed = false;
 	protected:
-		std::vector<std::unique_ptr<Component>> m_components;
+		std::vector<std::unique_ptr<Component>> components;
 	};
 
 	template<typename T>
 	inline T* Actor::GetComponent()
 	{
-		for (auto& component : m_components)
+		for (auto& component : components)
 		{
 			T* result = dynamic_cast<T*>(component.get());
 			if (result) return result;

@@ -100,6 +100,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>/WHOLEARCHIVE:Framework %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -117,6 +118,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>/WHOLEARCHIVE:Framework %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -130,6 +132,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>/WHOLEARCHIVE:Framework %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(SolutionDir)Bin\$(PlatformName)\$(Configuration)\$(ProjectName)\*.exe" "$(SolutionDir)Build" /Y</Command>
@@ -150,6 +153,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>/WHOLEARCHIVE:Framework %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -158,7 +162,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MultiShotEnemy.cpp" />
     <ClCompile Include="PewGame.cpp" />
-    <ClCompile Include="PewPew.cpp" />
+    <ClCompile Include="PewComponent.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="rock.cpp" />
   </ItemGroup>
@@ -184,7 +188,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="MultiShotEnemy.h" />
     <ClInclude Include="PewGame.h" />
-    <ClInclude Include="PewPew.h" />
+    <ClInclude Include="PewComponent.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="rock.h" />
   </ItemGroup>

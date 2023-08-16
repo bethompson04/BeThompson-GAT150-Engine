@@ -7,6 +7,7 @@ namespace MEN
 	{
 
 	public:
+		CLASS_DECLARATION(EnginePhysicsComponent)
 
 		virtual void Update(float deltaTime) override;
 		virtual void ApplyForce(const vec2& force) override;

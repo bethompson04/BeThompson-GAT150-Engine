@@ -16,7 +16,7 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="PewPew.cpp">
+    <ClCompile Include="PewComponent.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="PewGame.cpp">
@@ -39,7 +39,7 @@
     <ClInclude Include="Player.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="PewPew.h">
+    <ClInclude Include="PewComponent.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="PewGame.h">
