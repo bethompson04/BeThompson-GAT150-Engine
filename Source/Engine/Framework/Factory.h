@@ -7,6 +7,7 @@
 
 #define CREATE_CLASS(className) MEN::Factory::Instance().Create<MEN::className>(#className);
 #define CREATE_CLASS_BASE(classBase, className) MEN::Factory::Instance().Create<MEN::classBase>(className);
+#define INSTANTIATE(classBase, className) MEN::Factory::Instance().Create<MEN::classBase>(className);
 
 namespace MEN
 {
@@ -29,11 +30,28 @@ namespace MEN
 		}
 	};
 
+	template <typename T>
+	class PrototypeCreator : public CreatorBase
+	{
+	public:
+		PrototypeCreator(std::unique_ptr<T> prototype) : m_prototype{ std::move(prototype) } {}
+
+		std::unique_ptr<class Object> Create() override
+		{
+			return m_prototype->Clone();
+		}
+
+	private:
+		std::unique_ptr<T> m_prototype;
+	};
+
 	class Factory : public Singleton<Factory>
 	{
 	public:
 		template <typename T>
 		void Register(const std::string& key);
+		template <typename T>
+		void RegisterPrototype(const std::string& key, std::unique_ptr<T> prototype);
 
 		template <typename T>
 		std::unique_ptr<T> Create(const std::string& key);
@@ -53,6 +71,15 @@ namespace MEN
 
 		m_registry[key] = std::make_unique<Creator<T>>();
 	}
+
+	template<typename T>
+	inline void Factory::RegisterPrototype(const std::string& key, std::unique_ptr<T> prototype)
+	{
+		INFO_LOG("Prototype Class Registered: " << key);
+
+		m_registry[key] = std::make_unique<PrototypeCreator<T>>(std::move(prototype));
+	}
+
 	template<typename T>
 	inline std::unique_ptr<T> Factory::Create(const std::string& key)
 	{

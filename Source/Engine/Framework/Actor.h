@@ -18,6 +18,8 @@ namespace MEN
 			transform{ transform }
 		{}
 
+		Actor(const Actor& other);
+
 		virtual bool Initialize() override;
 		virtual void OnDestroy() override;
 
@@ -42,8 +44,10 @@ namespace MEN
 		std::string tag;
 
 		float lifespan = -1.0f;
-
 		bool m_destroyed = false;
+		bool persistent = false;
+		bool prototype = false;
+
 	protected:
 		std::vector<std::unique_ptr<Component>> components;
 	};

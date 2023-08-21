@@ -92,36 +92,6 @@ int main(int argc, char* argv[])
 	MEN::g_inputSystem.Initialize();
 	MEN::g_audioSystem.Initialize();
 
-	// --
-
-	MEN::MemoryTracker::Initialize();
-	MEN::seedRandom((unsigned int)time(nullptr));
-	MEN::setFilePath("assets");
-	rapidjson::Document document;
-	MEN::Json::Load("json.txt", document);
-	int i1;
-	MEN::Json::Read(document, "integer1", i1);
-	std::cout << i1 << std::endl;
-	int i2;
-	MEN::Json::Read(document, "integer2", i2);
-	std::cout << i2 << std::endl;
-
-	std::string str;
-	MEN::Json::Read(document, "string", str);
-	std::cout << str << std::endl;
-
-	bool b;
-	MEN::Json::Read(document, "boolean", b);
-	std::cout << b << std::endl;
-
-	float f;
-	MEN::Json::Read(document, "float", f);
-	std::cout << f << std::endl;
-
-	MEN::vec2 v2;
-	MEN::Json::Read(document, "vector2", v2, true);
-	std::cout << v2 << std::endl;
-
 	unique_ptr<PewGame> game = make_unique<PewGame>();
 	game->Initialize();
 	// Vector2 Model
@@ -175,17 +145,11 @@ int main(int argc, char* argv[])
 // DRAW
 		MEN::Vector2 vel(1.0f, 0.3f);
 
-		MEN::g_renderer.SetColor(255, 255, 255, 255);
+		game->Draw(MEN::g_renderer);
 
-		//for (auto& star : starSystem)
-		//{
-		//	star.UpdatePos();
-		//	star.WrapCheck(MEN::g_renderer.GetWidth(), MEN::g_renderer.GetHeight());
-		//	star.Draw(MEN::g_renderer);
-		//}
+		MEN::g_renderer.SetColor(255, 255, 255, 255);
 		
 		MEN::g_particleSystem.Draw(MEN::g_renderer);
-		game->Draw(MEN::g_renderer);
 		//MEN::g_renderer.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
 
 		MEN::g_renderer.EndFrame();

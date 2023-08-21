@@ -17,4 +17,9 @@ namespace MEN
 
         return (distance <= radius);
     }
+
+    void MEN::CircleCollisionComponent::Read(const json_t& value)
+    {
+
+    }
 }

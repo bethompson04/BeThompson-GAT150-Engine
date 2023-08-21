@@ -40,7 +40,8 @@ bool PewGame::Initialize()
 	// music by joshuaempyre on freesound.org
 	MEN::g_audioSystem.PlayOneShot("music", true);
 
-
+	m_scene->Load("Scene.json");
+	m_scene->Initialize();
 
 	return false;
 }
@@ -57,6 +58,8 @@ void PewGame::Update(float deltaTime)
 		if (MEN::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE))
 		{
    			m_state = eState::StartGame;
+			//auto actor = m_scene->GetActorByName<MEN::Actor>("spaceBackground");
+			//if (actor) actor->active = false;
 		}
 		break;
 	case PewGame::eState::StartGame:
@@ -71,7 +74,7 @@ void PewGame::Update(float deltaTime)
 	{
 		bossIsPresent = false;
 
-		m_scene->RemoveAll();
+		m_scene->RemoveAll(false);
 
 		for (int i = 0; i < 3; i++)
 		{
@@ -134,8 +137,6 @@ void PewGame::Update(float deltaTime)
 
 				enemy->Initialize();
 				m_scene->Add(std::move(enemy));
-
-				
 			}
 			else {
 // Create Enemy 2
@@ -188,7 +189,7 @@ void PewGame::Update(float deltaTime)
 		m_stateTimer -= deltaTime;
 		if (m_stateTimer <= 0)
 		{
-			m_scene->RemoveAll();
+			m_scene->RemoveAll(false);
 			m_state = eState::StartLevel;
 		}
 		break;
@@ -214,19 +215,20 @@ void PewGame::Update(float deltaTime)
 		m_stateTimer -= deltaTime;
 		if (m_stateTimer <= 0)
 		{
-			m_scene->RemoveAll();
+			m_scene->RemoveAll(false);
 			m_state = eState::Title;
 		}
 		break;
 	}
 
+	m_scene->Update(deltaTime);
 	m_livesText->Create(MEN::g_renderer, "Lives " + std::to_string(m_lives), MEN::Color{1, 1, 0.5f, 1});
 	m_scoreText->Create(MEN::g_renderer, std::to_string(m_score), MEN::Color{ 1,1,0.5f,1 });
-	m_scene->Update(deltaTime);
 }
 
 void PewGame::Draw(MEN::Renderer& renderer)
 {
+	m_scene->Draw(renderer);
 	if (m_state == eState::Title)
 	{
 		m_titleText->Draw(renderer, 300, 300);
@@ -235,7 +237,6 @@ void PewGame::Draw(MEN::Renderer& renderer)
 	{
 		m_gameOverText->Draw(renderer, 400, 300);
 	}
-	m_scene->Draw(renderer);
 	m_scoreText->Draw(renderer, 40, 40);
 	m_livesText->Draw(renderer, 40, 80);
  }

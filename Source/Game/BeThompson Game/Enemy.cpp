@@ -2,7 +2,7 @@
 #include "Renderer/Renderer.h"
 #include "Framework/Scene.h"
 #include "Player.h"
-#include "PewComponent.h"
+#include "Weapon.h"
 #include "PewGame.h"
 #include "Framework/Emitter.h"
 #include "Framework/Framework.h"
@@ -55,20 +55,11 @@ void Enemy::Update(float deltaTime)
 	m_fireTimer -= deltaTime;
 	if (m_fireTimer <= 0)
 	{
-		MEN::Transform m_transform{transform.position, transform.rotation, 1};
-		std::unique_ptr<PewPew> pewPew = std::make_unique<PewPew>("pew", 400.0f, m_transform);
-		pewPew->tag = "Enemy_Bullet";
+		auto weapon = INSTANTIATE(Weapon, "Rocket_Enemy");
+		weapon->transform = { transform.position, transform.rotation, 1 };
+		weapon->Initialize();
+		m_scene->Add(std::move(weapon));
 
-		std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-		component->m_texture = GET_RESOURCE(MEN::Texture, "rocket.png", MEN::g_renderer);
-
-		pewPew->AddComponent(std::move(component));
-
-		auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
-		collisionComponent->m_radius = 30.0f;
-		pewPew->AddComponent(std::move(collisionComponent));
-
-		m_scene->Add(std::move(pewPew));
 		//Reset Timer
 		m_fireTimer = m_fireRate;
 	}
@@ -102,7 +93,7 @@ void Enemy::OnCollision(Actor* other)
 
 		data.color = MEN::Color{ 1, 1, 0.5f, 1 };
 
-		MEN::Transform transformP{ { transform.position }, 0, 1 };
+		MEN::Transform transformP{ { this->transform.position }, 0, 1 };
 		std::unique_ptr<MEN::Emitter> emitter = std::make_unique<MEN::Emitter>(transformP, data);
 		emitter->lifespan = 0.2f;
 		m_scene->Add(std::move(emitter));

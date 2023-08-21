@@ -16,4 +16,8 @@ namespace MEN
 		m_velocity += force;
 	}
 
+	void MEN::EnginePhysicsComponent::Read(const json_t& value)
+	{
+
+	}
 }

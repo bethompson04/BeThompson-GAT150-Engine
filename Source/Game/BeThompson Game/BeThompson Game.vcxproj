@@ -162,7 +162,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MultiShotEnemy.cpp" />
     <ClCompile Include="PewGame.cpp" />
-    <ClCompile Include="PewComponent.cpp" />
+    <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="rock.cpp" />
   </ItemGroup>
@@ -188,9 +188,12 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="MultiShotEnemy.h" />
     <ClInclude Include="PewGame.h" />
-    <ClInclude Include="PewComponent.h" />
+    <ClInclude Include="Weapon.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="rock.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\Build\Assets\Scene.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

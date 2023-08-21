@@ -1,0 +1,64 @@
+{
+	"actors":[
+		{
+			"type": "Actor",
+			"name": "Background",
+			"persistent": true,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 2.0,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "spaceBackground.png"
+				}
+			]
+		},
+		{
+			"type": "Weapon",
+			"name": "Rocket_Player",
+			"prototype": true,
+			"tag": "Player",
+			"lifespan": 2.0,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1.0,
+				"rotation": 0
+			},
+			"speed": 400.0,
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "rocket.png"
+				},
+				{
+					"type": "CircleCollisionComponent"
+				}
+			]
+		},
+		{
+			"type": "Weapon",
+			"name": "Rocket_Enemy",
+			"prototype": true,
+			"tag": "Enemy",
+			"lifespan": 1.0,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1.0,
+				"rotation": 0
+			},
+			"speed": 300.0,
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "rocket.png"
+				},
+				{
+					"type": "CircleCollisionComponent"
+				}
+			]
+		}
+	]
+}
