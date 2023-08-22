@@ -9,6 +9,8 @@
 #include "Player.h"
 #include "Enemy.h"
 
+#include "Pyshics/PsyhicsSystem.h"
+
 #include <iostream>
 #include <vector>
 #include <thread>
@@ -98,6 +100,9 @@ int main(int argc, char* argv[])
 
 	MEN::vec2 v(5, 5);
 	v.Normalize();
+
+	// PhysicsSystem
+	MEN::PhysicsSystem::Instance().Initialize();
 
 // Star loop
 	vector<Star> starSystem;

@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{510D8D
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BeThompson Game", "Source\Game\BeThompson Game\BeThompson Game.vcxproj", "{7205EC1C-FB22-485F-A419-F1D843B50F6A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pyshics2", "Source\Engine\Pyshics\Pyshics.vcxproj", "{6B9372B9-7412-48FF-9C93-CD4B4B8F4274}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -75,6 +77,14 @@ Global
 		{7205EC1C-FB22-485F-A419-F1D843B50F6A}.Release|x64.Build.0 = Release|x64
 		{7205EC1C-FB22-485F-A419-F1D843B50F6A}.Release|x86.ActiveCfg = Release|Win32
 		{7205EC1C-FB22-485F-A419-F1D843B50F6A}.Release|x86.Build.0 = Release|Win32
+		{6B9372B9-7412-48FF-9C93-CD4B4B8F4274}.Debug|x64.ActiveCfg = Debug|x64
+		{6B9372B9-7412-48FF-9C93-CD4B4B8F4274}.Debug|x64.Build.0 = Debug|x64
+		{6B9372B9-7412-48FF-9C93-CD4B4B8F4274}.Debug|x86.ActiveCfg = Debug|Win32
+		{6B9372B9-7412-48FF-9C93-CD4B4B8F4274}.Debug|x86.Build.0 = Debug|Win32
+		{6B9372B9-7412-48FF-9C93-CD4B4B8F4274}.Release|x64.ActiveCfg = Release|x64
+		{6B9372B9-7412-48FF-9C93-CD4B4B8F4274}.Release|x64.Build.0 = Release|x64
+		{6B9372B9-7412-48FF-9C93-CD4B4B8F4274}.Release|x86.ActiveCfg = Release|Win32
+		{6B9372B9-7412-48FF-9C93-CD4B4B8F4274}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +96,7 @@ Global
 		{7D175A5D-17B1-4241-B2BA-313903833935} = {510D8DA9-637C-4E81-9ECB-A5B2540A3D51}
 		{EFCA60DE-5052-4859-B011-FE2F92D65B37} = {510D8DA9-637C-4E81-9ECB-A5B2540A3D51}
 		{7205EC1C-FB22-485F-A419-F1D843B50F6A} = {7723DEF7-8C9C-440C-BAB2-10F429623409}
+		{6B9372B9-7412-48FF-9C93-CD4B4B8F4274} = {510D8DA9-637C-4E81-9ECB-A5B2540A3D51}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB600A43-5144-411A-AB64-1B3ABD56F235}

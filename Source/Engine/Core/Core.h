@@ -7,7 +7,6 @@
 #include "Memory.h"
 #include "Time.h"
 
-
 // Gross math stuff
 #include "Math/Color.h"
 #include "Math/Transform.h"
