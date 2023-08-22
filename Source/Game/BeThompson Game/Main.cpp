@@ -17,6 +17,7 @@
 #include <cassert>
 
 #include <array>
+#include <functional>
 
 using namespace std;
 
@@ -51,33 +52,63 @@ public:
 
 // *=================================================== FUNCTIONS
 
-//class A
-//{
-//public:
-//	virtual void print() { cout << "A\n"; }
-//};
-//class B : public A
-//{
-//	void print() override { cout << "B\n"; }
-//};
-//class C : public A
-//{
-//	void print() override { cout << "C\n"; }
-//};
-//
-//A* Create(const std::string& name)
-//{
-//	if (name == "B") return new B();
-//	if (name == "C") return new C();
-//
-//	return nullptr;
-//}
+void print(int i)
+{
+	std::cout << i << std::endl;
+}
+
+int add(int i1, int i2)
+{
+	return i1 + i2;
+}
+
+int sub(int i1, int i2)
+{
+	return i1 - i2;
+}
+
+class A
+{
+public:
+	int add(int i1, int i2)
+	{
+		return i1 + i2;
+	}
+};
+
+union Data
+{
+	int i;
+	bool b;
+	char c[6];
+};
+
 
 // *================================================== MAIN
 
 int main(int argc, char* argv[])
 {
+	Data data;
+	data.i = 0;
+	cout << data.b << endl;
 
+
+
+	void (*func_ptr)(int) = &print;
+	func_ptr(5);
+
+	int (*op_ptr)(int, int);
+	op_ptr = sub;
+
+	cout << op_ptr(5, 3) << endl;
+
+	std::function<int(int, int)> op;
+	op = add;
+	cout << op(6, 6) << endl;
+
+	A a;
+	op = std::bind(&A::add, &a, std::placeholders::_1, std::placeholders::_2);
+	cout << op(6, 7) << endl;
 
 	MEN::Factory::Instance().Register<MEN::SpriteComponent>("SpriteComponent");
 

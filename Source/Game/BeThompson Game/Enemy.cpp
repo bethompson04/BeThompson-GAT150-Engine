@@ -75,7 +75,8 @@ void Enemy::OnCollision(Actor* other)
 	// Player* p = dynamic_cast<Player*>(other)
 	if (other->tag == "Player" || other->tag == "Player_Bullet")
 	{
-		m_game->AddPoints(100);
+		MEN::EventManager::Instance().DispatchEvent("OnAddPoints", 100);
+		//m_game->AddPoints(100);
 		this->m_destroyed = true;
 
 		MEN::EmitterData data;

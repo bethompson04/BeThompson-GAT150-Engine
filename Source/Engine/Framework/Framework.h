@@ -21,4 +21,6 @@
 #include "Components/CollisionComponent.h"
 #include "Components/CircleCollisionComponent.h"
 
+#include "Event/EventManager.h"
+
 #include "Factory.h"

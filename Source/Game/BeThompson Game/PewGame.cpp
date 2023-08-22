@@ -43,6 +43,10 @@ bool PewGame::Initialize()
 	m_scene->Load("Scene.json");
 	m_scene->Initialize();
 
+	// Add Events
+	EVENT_SUBSCRIBE("OnAddPoints", PewGame::OnAddPoints);
+	EVENT_SUBSCRIBE("OnPlayerDead", PewGame::OnPlayerDead);
+
 	return false;
 }
 
@@ -204,7 +208,6 @@ void PewGame::Update(float deltaTime)
 		if (m_stateTimer <= 0)
 		{
 			m_state = eState::StartLevel;
-			m_lives -= 1;
 		}
 		break;
 	case PewGame::eState::GameOverStart:
@@ -240,3 +243,17 @@ void PewGame::Draw(MEN::Renderer& renderer)
 	m_scoreText->Draw(renderer, 40, 40);
 	m_livesText->Draw(renderer, 40, 80);
  }
+
+void PewGame::OnAddPoints(const MEN::Event& event)
+{
+	m_score += std::get<int>(event.data);
+
+
+}
+
+void PewGame::OnPlayerDead(const MEN::Event& event)
+{
+	m_lives--;
+	m_state = eState::PlayerDeadStart;
+
+}

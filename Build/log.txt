@@ -5,6 +5,8 @@ INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Fr
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: CircleCollisionComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Actor
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: SpriteComponent
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Game\BeThompson Game\Main.cpp(83) Initializing Engine.
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Game\BeThompson Game\Main.cpp(116) Initializing Engine.
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: Rocket_Player
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: Rocket_Enemy
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Event\EventManager.cpp(17) Event Subscribed: AddPoints
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Event\EventManager.cpp(17) Event Subscribed: OnPlayerDead

@@ -4,6 +4,7 @@ C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framewor
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Components\ModelRenderComponent.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Components\SpriteComponent.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Emitter.cpp
+C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Event\EventManager.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Object.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Scene.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Singleton.cpp

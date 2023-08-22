@@ -1,8 +1,9 @@
 #pragma once
 #include "Framework/Game.h"
+#include "Framework/Event/EventManager.h"
 #include "Renderer/Text.h"
 
-class PewGame : public MEN::Game
+class PewGame : public MEN::Game, MEN::IEventListener
 {
 public:
 	enum class eState
@@ -29,6 +30,10 @@ public:
 	virtual void Draw(MEN::Renderer& renderer) override;
 
 	void SetState(eState state) { m_state = state; }
+
+	void OnAddPoints(const MEN::Event& event);
+	void OnPlayerDead(const MEN::Event& event);
+
 private:
 	eState m_state = eState::Title;
 	float m_spawnTimer = 0;

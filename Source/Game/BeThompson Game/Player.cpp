@@ -80,14 +80,15 @@ void Player::OnCollision(Actor* other)
 	if (other->tag == "Rock")
 	{
 		this->m_destroyed = true;
-		dynamic_cast<PewGame*>(m_game)->SetState(PewGame::eState::PlayerDeadStart);
+		MEN::EventManager::Instance().DispatchEvent("OnPlayerDead", 0);
 	}
 	
 	if (other->tag == "Enemy" || other->tag == "Enemy_Bullet")
 	{
 		this->m_destroyed = true;
 		other->m_destroyed = true;
-		dynamic_cast<PewGame*>(m_game)->SetState(PewGame::eState::PlayerDeadStart);
+		MEN::EventManager::Instance().DispatchEvent("OnPlayerDead", 0);
+		
 	}	
 }
 
