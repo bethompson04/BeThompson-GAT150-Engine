@@ -2,18 +2,23 @@
 #include "Enemy.h"
 #include "Framework/Actor.h"
 
-class MultiShotEnemy : public Enemy
+namespace MEN
 {
-public:
-	MultiShotEnemy(float speed, float turnRate, const MEN::Transform& transform) : Enemy{ speed, turnRate, transform }
+	class MultiShotEnemy : public Enemy
 	{
-		m_fireRate = 5.0f;
-		m_fireTimer = m_fireRate;
-	}
+	public:
+		CLASS_DECLARATION(MultiShotEnemy)
 
-	void Update(float deltaTime);
-	void OnCollision(Actor* other);
+		MultiShotEnemy() = default;
+		MultiShotEnemy(float speed, float turnRate, const MEN::Transform& transform) : Enemy{ speed, turnRate, transform }
+		{
+			m_fireRate = 5.0f;
+			m_fireTimer = m_fireRate;
+		}
 
+		void Update(float deltaTime);
+		void OnCollision(Actor* other);
 	
-private:
-};
+	private:
+	};
+}

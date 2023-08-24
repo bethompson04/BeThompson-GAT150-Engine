@@ -9,7 +9,7 @@
 #include "Player.h"
 #include "Enemy.h"
 
-#include "Pyshics/PsyhicsSystem.h"
+#include "Pyshics/PhysicsSystem.h"
 
 #include <iostream>
 #include <vector>
@@ -158,6 +158,9 @@ int main(int argc, char* argv[])
 		{
 			quit = true;
 		}
+
+		MEN::g_particleSystem.Update(MEN::g_time.GetDeltaTime());
+		MEN::PhysicsSystem::Instance().Update(MEN::g_time.GetDeltaTime());
 
 		if (MEN::g_inputSystem.GetMouseButtonDown(0))
 		{

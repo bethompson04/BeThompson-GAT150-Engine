@@ -1,8 +1,11 @@
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Actor.cpp
+C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Components\Box2DCollisionComponent.cpp
+C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Components\Box2DPhysicsComponent.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Components\CircleCollisionComponent.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Components\EnginePhysicsComponent.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Components\ModelRenderComponent.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Components\SpriteComponent.cpp
+C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Components\TextRenderComponent.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Emitter.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Event\EventManager.cpp
 C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Object.cpp

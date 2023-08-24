@@ -24,8 +24,8 @@ bool PewGame::Initialize()
 	m_livesText = std::make_unique<MEN::Text>(GET_RESOURCE(MEN::Font, "ArcadeClassic.ttf", 25));
 	
 
-	m_titleText = std::make_unique<MEN::Text>(GET_RESOURCE(MEN::Font,"ArcadeClassic.ttf", 50));
-	m_titleText->Create(MEN::g_renderer, "UHHH BEN ASTEROID", MEN::Color{1, 1, 1, 1});
+	/*m_titleText = std::make_unique<MEN::Text>(GET_RESOURCE(MEN::Font,"ArcadeClassic.ttf", 50));
+	m_titleText->Create(MEN::g_renderer, "UHHH BEN ASTEROID", MEN::Color{1, 1, 1, 1});*/
 	
 	m_gameOverText = std::make_unique<MEN::Text>(GET_RESOURCE(MEN::Font, "ArcadeClassic.ttf", 50));
 	m_gameOverText->Create(MEN::g_renderer, "GAMER OVER", MEN::Color{1, 1, 1, 1});
@@ -35,13 +35,20 @@ bool PewGame::Initialize()
 
 	m_scene = std::make_unique<MEN::Scene>();
 
+	
+
 	m_state = eState::Title;
 
 	// music by joshuaempyre on freesound.org
 	MEN::g_audioSystem.PlayOneShot("music", true);
 
 	m_scene->Load("Scene.json");
+
+	//auto title = INSTANTIATE(Actor, "Title");
+
 	m_scene->Initialize();
+
+	
 
 	// Add Events
 	EVENT_SUBSCRIBE("OnAddPoints", PewGame::OnAddPoints);
@@ -88,22 +95,8 @@ void PewGame::Update(float deltaTime)
 			m_scene->Add(std::move(rock));
 		}
 // Create Player
-		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, MEN::pi, MEN::Transform{{ 400, 300 }, 0, 1.5});
-		player->tag = "Player";
-		player->m_game = this;
-
-	// Add Components
-		auto renderComponent = CREATE_CLASS(SpriteComponent);
-		renderComponent->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
-		player->AddComponent(std::move(renderComponent));
-
-		auto physicsComponent = CREATE_CLASS(EnginePhysicsComponent);
-		player->AddComponent(std::move(physicsComponent));
-
-		auto collisionComponent = CREATE_CLASS(CircleCollisionComponent);
-		collisionComponent->m_radius = 30.0f;
-		player->AddComponent(std::move(collisionComponent));
-
+		auto player = INSTANTIATE(Player, "Player");
+		player->transform = MEN::Transform{ { 400, 300 }, 0, 1 };
 		player->Initialize();
 		m_scene->Add(std::move(player));
 
@@ -127,37 +120,28 @@ void PewGame::Update(float deltaTime)
 			if (choice == 1 || choice == 2 || choice == 3)
 			{
 // Create Enemy 1
-				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 1});
-				enemy->tag = "Enemy";
-				enemy->m_game = this;
-
-				std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-				component->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
-				enemy->AddComponent(std::move(component));
-
-				auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
-				collisionComponent->m_radius = 30.0f;
-				enemy->AddComponent(std::move(collisionComponent));
-
+				auto enemy = INSTANTIATE(Enemy, "Enemy");
 				enemy->Initialize();
 				m_scene->Add(std::move(enemy));
+
+
 			}
 			else {
 // Create Enemy 2
-				std::unique_ptr<MultiShotEnemy> enemy = std::make_unique<MultiShotEnemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 1});
-				enemy->tag = "Enemy";
-				enemy->m_game = this;
+				//std::unique_ptr<MultiShotEnemy> enemy = std::make_unique<MultiShotEnemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 1});
+				//enemy->tag = "Enemy";
+				//enemy->m_game = this;
 
-				std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-				component->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
-				enemy->AddComponent(std::move(component));
+				//std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
+				//component->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
+				//enemy->AddComponent(std::move(component));
 
-				auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
-				collisionComponent->m_radius = 30.0f;
-				enemy->AddComponent(std::move(collisionComponent));
+				//auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+				//collisionComponent->m_radius = 30.0f;
+				//enemy->AddComponent(std::move(collisionComponent));
 
-				enemy->Initialize();
-				m_scene->Add(std::move(enemy));
+				//enemy->Initialize();
+				//m_scene->Add(std::move(enemy));
 
 				
 			}
@@ -168,23 +152,23 @@ void PewGame::Update(float deltaTime)
 		if (!bossIsPresent)
 		{
 // Create Boss
-			std::unique_ptr<Boss> boss = std::make_unique<Boss>(10, MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3});
-			boss->tag = "Enemy";
-			boss->m_game = this;
+			//std::unique_ptr<Boss> boss = std::make_unique<Boss>(10, MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3});
+			//boss->tag = "Enemy";
+			//boss->m_game = this;
 
-			std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-			component->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
-			boss->AddComponent(std::move(component));
+			//std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
+			//component->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
+			//boss->AddComponent(std::move(component));
 
-			auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
-			collisionComponent->m_radius = 30.0f;
-			boss->AddComponent(std::move(collisionComponent));
+			//auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
+			//collisionComponent->m_radius = 30.0f;
+			//boss->AddComponent(std::move(collisionComponent));
 
-			boss->Initialize();
-			m_scene->Add(std::move(boss));
+			//boss->Initialize();
+			//m_scene->Add(std::move(boss));
 
-			bossIsPresent = true;
-			std::cout << "Boss Spawned!" << std::endl;
+			//bossIsPresent = true;
+			//std::cout << "Boss Spawned!" << std::endl;
 		}
 	}
 	break;
@@ -234,7 +218,7 @@ void PewGame::Draw(MEN::Renderer& renderer)
 	m_scene->Draw(renderer);
 	if (m_state == eState::Title)
 	{
-		m_titleText->Draw(renderer, 300, 300);
+		m_scene->GetActorByName("Title")->Draw(renderer);
 	}
 	if (m_state == eState::GameOver)
 	{

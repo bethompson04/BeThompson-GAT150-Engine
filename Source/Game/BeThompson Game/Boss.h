@@ -1,30 +1,35 @@
 #pragma once
 #include "Enemy.h"
 
-class Boss : public Enemy
+namespace MEN
 {
-public:
-
-	Boss(int HP, float speed, float turnRate, const MEN::Transform& transform) :
-		Enemy{ speed, turnRate, transform }
+	class Boss : public Enemy
 	{
-		m_fireRate = 1.0f;
-		m_fireTimer = m_fireRate;
-		hits = 0;;
-		hitsToDie = HP;
-	}
+	public:
+		CLASS_DECLARATION(Boss)
 
-	void Update(float deltaTime) override;
-	void OnCollision(Actor* other);
+		Boss() = default;
+		Boss(int HP, float speed, float turnRate, const MEN::Transform& transform) :
+			Enemy{ speed, turnRate, transform }
+		{
+			m_fireRate = 1.0f;
+			m_fireTimer = m_fireRate;
+			hits = 0;;
+			hitsToDie = HP;
+		}
 
-	int hits;
+		void Update(float deltaTime) override;
+		void OnCollision(Actor* other);
 
-private:
-	int hitsToDie = 0;
+		int hits;
 
-	float m_speed = 0;
-	float m_turnRate = 0;
+	private:
+		int hitsToDie = 0;
 
-	float m_fireRate = 0;
-	float m_fireTimer = 0;
-};
+		float m_speed = 0;
+		float m_turnRate = 0;
+
+		float m_fireRate = 0;
+		float m_fireTimer = 0;
+	};
+}

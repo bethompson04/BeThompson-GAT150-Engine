@@ -11,5 +11,7 @@ namespace MEN
 
 		virtual void Update(float deltaTime) override;
 		virtual void ApplyForce(const vec2& force) override;
+
+		virtual void ApplyTorque(float torque) override;
 	};
 }

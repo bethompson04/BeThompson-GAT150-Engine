@@ -5,6 +5,10 @@
 
 #define READ_DATA(value, data) MEN::Json::Read(value, #data, data)
 #define READ_DATA_REQUIRED(value, data) MEN::Json::Read(value, #data, data, true)
+
+#define READ_NAME_DATA(value, name, data) MEN::Json::Read(value, name, data)
+#define READ_NAME_DATA_REQUIRED(value, name, data) MEN::Json::Read(value, name, data, true)
+
 #define HAS_DATA(value, data) value.HasMember(#data)
 #define GET_DATA(value, data) value[#data]
 
@@ -18,7 +22,7 @@ namespace MEN
 		static bool Read(const rapidjson::Value& value, const std::string& name, float& data, bool required = false);
 		static bool Read(const rapidjson::Value& value, const std::string& name, bool& data, bool required = false);
 		static bool Read(const rapidjson::Value& value, const std::string& name, std::string& data, bool required = false);
-		static bool Read(const rapidjson::Value& value, const std::string& name, vec2& data, bool required);
+		static bool Read(const rapidjson::Value& value, const std::string& name, vec2& data, bool required = false);
 	private:
 	};
 

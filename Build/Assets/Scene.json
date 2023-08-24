@@ -1,5 +1,5 @@
 {
-	"actors":[
+	"actors": [
 		{
 			"type": "Actor",
 			"name": "Background",
@@ -17,11 +17,29 @@
 			]
 		},
 		{
+			"type": "Actor",
+			"name": "Title",
+			"persistent": true,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 2.0,
+				"rotation": 0.0
+			},
+			"components": [
+				{
+					"type": "TextRenderComponent",
+					"fontName": "ArcadeClassic.ttf",
+					"fontSize": 24,
+					"text": "BEN ASTEROID"
+				}
+			]
+		},
+		{
 			"type": "Weapon",
 			"name": "Rocket_Player",
 			"prototype": true,
 			"tag": "Player",
-			"lifespan": 2.0,
+			"lifespan": 5.0,
 			"transform": {
 				"position": [ 400, 300 ],
 				"scale": 1.0,
@@ -43,7 +61,7 @@
 			"name": "Rocket_Enemy",
 			"prototype": true,
 			"tag": "Enemy",
-			"lifespan": 1.0,
+			"lifespan": 4.0,
 			"transform": {
 				"position": [ 400, 300 ],
 				"scale": 1.0,
@@ -57,6 +75,65 @@
 				},
 				{
 					"type": "CircleCollisionComponent"
+				}
+			]
+		},
+		{
+			"type": "Enemy",
+			"name": "Enemy",
+			"prototype": true,
+			"tag": "Enemy",
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1.0,
+				"rotation": 0.0
+			},
+			"m_speed": 0.3,
+			"m_turnRate": 0.1,
+			"m_fireRate": 2,
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "ship.png"
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"damping": 0.98,
+					"angularDamping": 2,
+					"gravityScale": 0
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"size": [ 32, 32 ]
+				}
+			]
+		},
+		{
+			"type": "Player",
+			"name": "Player",
+			"prototype": true,
+			"tag": "Player",
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1.0,
+				"rotation": 0.0
+			},
+			"m_speed": 0.7,
+			"m_turnRate": 0.1,
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "ship.png"
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"damping": 0.98,
+					"angularDamping": 2,
+					"gravityScale": 0
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"size": [ 32, 32 ]
 				}
 			]
 		}

@@ -14,6 +14,9 @@
     <Filter Include="Source\Event">
       <UniqueIdentifier>{5b491628-2035-49e7-9ca3-41393fce2b38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Components\Collision">
+      <UniqueIdentifier>{b85fb9b0-2664-43fa-8f9a-4387866d3155}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h">
@@ -58,12 +61,6 @@
     <ClInclude Include="Object.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Components\CollisionComponent.h">
-      <Filter>Source\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\CircleCollisionComponent.h">
-      <Filter>Source\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>Source</Filter>
     </ClInclude>
@@ -75,6 +72,21 @@
     </ClInclude>
     <ClInclude Include="Event\EventManager.h">
       <Filter>Source\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\TextRenderComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Box2DPhysicsComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\CircleCollisionComponent.h">
+      <Filter>Source\Components\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\CollisionComponent.h">
+      <Filter>Source\Components\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Box2DCollisionComponent.h">
+      <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -93,9 +105,6 @@
     <ClCompile Include="Components\ModelRenderComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Components\CircleCollisionComponent.cpp">
-      <Filter>Source\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Singleton.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -107,6 +116,18 @@
     </ClCompile>
     <ClCompile Include="Event\EventManager.cpp">
       <Filter>Source\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\TextRenderComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Box2DPhysicsComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\CircleCollisionComponent.cpp">
+      <Filter>Source\Components\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Box2DCollisionComponent.cpp">
+      <Filter>Source\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,12 +1,21 @@
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Boss
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Enemy
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: MultiShotEnemy
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Weapon
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Player
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: TextRenderComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: SpriteComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: ModelRenderComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: EnginePhysicsComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: CircleCollisionComponent
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Box2DPhysicsComponent
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Box2DCollisionComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Actor
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: SpriteComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Game\BeThompson Game\Main.cpp(116) Initializing Engine.
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: Rocket_Player
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: Rocket_Enemy
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Event\EventManager.cpp(17) Event Subscribed: AddPoints
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: Enemy
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: Player
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Event\EventManager.cpp(17) Event Subscribed: OnAddPoints
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Event\EventManager.cpp(17) Event Subscribed: OnPlayerDead
