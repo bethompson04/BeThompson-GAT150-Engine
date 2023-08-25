@@ -14,6 +14,6 @@ void Rock::Update(float deltaTime)
 	transform.position.y = MEN::Wrap(transform.position.y, (float)MEN::g_renderer.GetHeight());
 }
 
-void Rock::OnCollision(Actor* other)
+void Rock::OnCollisionEnter(Actor* other)
 {
 }

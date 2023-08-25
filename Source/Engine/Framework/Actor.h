@@ -3,6 +3,7 @@
 #include "Renderer/Model.h"
 #include "Components/Component.h"
 #include "Framework/Object.h"
+#include "Framework/Components/PhysicsComponent.h"
 #include <memory>
 
 namespace MEN
@@ -31,8 +32,8 @@ namespace MEN
 		template<typename T>
 		T* GetComponent();
 
-		float GetRadius() { return 30.0f; }
-		virtual void OnCollision(Actor* other) {}
+		virtual void OnCollisionEnter(Actor* other) {}
+		virtual void OnCollisionExit(Actor* other) {}
 
 		friend class Scene;
 

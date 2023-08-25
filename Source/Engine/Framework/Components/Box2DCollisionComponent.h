@@ -13,7 +13,7 @@ namespace MEN
 	public:
 		CLASS_DECLARATION(Box2DCollisionComponent)
 
-			virtual bool Initialize() override;
+		virtual bool Initialize() override;
 		virtual void Update(float dt) override;
 
 	private:

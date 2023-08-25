@@ -18,7 +18,7 @@ namespace MEN
 		bool Initialize() override;
 
 		void Update(float deltaTime) override;
-		void OnCollision(Actor* other) override;
+		void OnCollisionEnter(Actor* other) override;
 
 	private:
 		float m_speed = 0;
@@ -27,7 +27,7 @@ namespace MEN
 		bool multiShotx2 = false;
 		bool multiShotx3 = false;
 
-		void Shoot();
+		void Shoot(vec2 forward);
 
 		PhysicsComponent* m_physicsComponent = nullptr;
 	};

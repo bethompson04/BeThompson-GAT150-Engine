@@ -27,12 +27,7 @@ namespace MEN
 		auto collisionComponent = GetComponent<MEN::CollisionComponent>();
 		if (collisionComponent)
 		{
-			auto renderComponent = GetComponent<MEN::RenderComponent>();
-			if (renderComponent)
-			{
-				float scale = transform.scale;
-				collisionComponent->m_radius = renderComponent->GetRadius() * scale * 0.75f;
-			}
+
 		}
 
 		return true;
@@ -68,7 +63,7 @@ namespace MEN
 		if (MEN::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) && !MEN::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE))
 		{
 			MEN::g_audioSystem.PlayOneShot("pew", false);
-			Shoot();
+			Shoot(forward);
 		
 		}
 
@@ -77,7 +72,7 @@ namespace MEN
 
 	}
 
-	void Player::OnCollision(Actor* other)
+	void Player::OnCollisionEnter(Actor* other)
 	{
 		if (other->tag == "Rock")
 		{
@@ -95,7 +90,7 @@ namespace MEN
 	}
 
 
-	void Player::Shoot() {
+	void Player::Shoot(vec2 forward) {
 
 		MEN::EmitterData data;
 
@@ -122,34 +117,34 @@ namespace MEN
 		if(score >= 750 && score < 1500)
 		{
 			auto weapon = INSTANTIATE(Weapon, "Rocket_Player");
-			weapon->transform = { transform.position, transform.rotation + MEN::DegreesToRadians(20), 1 };
+			weapon->transform = { transform.position + forward * 30, transform.rotation + MEN::DegreesToRadians(20), 1 };
 			weapon->Initialize();
 			m_scene->Add(std::move(weapon));
 
 			weapon = INSTANTIATE(Weapon, "Rocket_Player");
-			weapon->transform = { transform.position, transform.rotation - MEN::DegreesToRadians(20), 1 };
+			weapon->transform = { transform.position + forward * 30, transform.rotation - MEN::DegreesToRadians(20), 1 };
 			weapon->Initialize();
 			m_scene->Add(std::move(weapon));
 		}else if (score >= 1500)
 		{
 			auto weapon = INSTANTIATE(Weapon, "Rocket_Player");
-			weapon->transform = { transform.position, transform.rotation + MEN::DegreesToRadians(20), 1 };
+			weapon->transform = { transform.position + forward * 30, transform.rotation + MEN::DegreesToRadians(20), 1 };
 			weapon->Initialize();
 			m_scene->Add(std::move(weapon));
 
 			weapon = INSTANTIATE(Weapon, "Rocket_Player");
-			weapon->transform = { transform.position, transform.rotation - MEN::DegreesToRadians(20), 1 };
+			weapon->transform = { transform.position + forward * 30, transform.rotation - MEN::DegreesToRadians(20), 1 };
 			weapon->Initialize();
 			m_scene->Add(std::move(weapon));
 
 			weapon = INSTANTIATE(Weapon, "Rocket_Player");
-			weapon->transform = { transform.position, transform.rotation, 1 };
+			weapon->transform = { transform.position + forward * 30, transform.rotation, 1 };
 			weapon->Initialize();
 			m_scene->Add(std::move(weapon));
 		}else
 		{
 			auto weapon = INSTANTIATE(Weapon, "Rocket_Player");
-			weapon->transform = { transform.position, transform.rotation, 1 };
+			weapon->transform = { transform.position + forward * 30, transform.rotation, 1 };
 			weapon->Initialize();
 			m_scene->Add(std::move(weapon));
 		}

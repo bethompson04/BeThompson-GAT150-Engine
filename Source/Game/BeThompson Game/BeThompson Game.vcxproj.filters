@@ -25,16 +25,10 @@
     <ClCompile Include="PewGame.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="rock.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss.cpp">
-      <Filter>Source\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Source\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="MultiShotEnemy.cpp">
+    <ClCompile Include="rock.cpp">
       <Filter>Source\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
@@ -48,22 +42,16 @@
     <ClInclude Include="PewGame.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="rock.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss.h">
-      <Filter>Source\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Source\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="MultiShotEnemy.h">
+    <ClInclude Include="rock.h">
       <Filter>Source\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\Build\Assets\Scene.json">
+    <None Include="..\..\..\Build\Assets\Scenes\SpaceScene.json">
       <Filter>Resources</Filter>
-    </Text>
+    </None>
   </ItemGroup>
 </Project>

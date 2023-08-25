@@ -10,16 +10,12 @@ namespace MEN
 	{
 		Actor::Initialize();
 
+		m_physicsComponent = GetComponent<PhysicsComponent>();
+
 		auto collisionComponent = GetComponent<CollisionComponent>();
 		if (collisionComponent)
 		{
-			auto renderComponent = GetComponent<RenderComponent>();
-			if (renderComponent)
-			{
-				float scale = transform.scale;
-				collisionComponent->m_radius = renderComponent->GetRadius() * scale;
 
-			}
 		}
 		return true;
 	}
@@ -29,8 +25,7 @@ namespace MEN
 		Actor::Update(deltaTime);
 
 		MEN::vec2 forward = MEN::vec2{ 0 , -1 }.Rotate(transform.rotation);
-
-		transform.position += forward * speed * MEN::g_time.GetDeltaTime();
+		m_physicsComponent->SetVelocity(forward * speed);
 
 		transform.position.x = MEN::Wrap(transform.position.x, (float)MEN::g_renderer.GetWidth());
 		transform.position.y = MEN::Wrap(transform.position.y, (float)MEN::g_renderer.GetHeight());

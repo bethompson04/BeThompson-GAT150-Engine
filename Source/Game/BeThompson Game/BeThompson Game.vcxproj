@@ -157,10 +157,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MultiShotEnemy.cpp" />
     <ClCompile Include="PewGame.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -187,16 +185,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Boss.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="MultiShotEnemy.h" />
     <ClInclude Include="PewGame.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="rock.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\Build\Assets\Scene.json" />
+    <None Include="..\..\..\Build\Assets\Scenes\SpaceScene.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

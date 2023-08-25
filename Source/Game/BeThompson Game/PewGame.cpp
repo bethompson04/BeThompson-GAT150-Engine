@@ -1,8 +1,6 @@
 #include "PewGame.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "MultiShotEnemy.h"
-#include "Boss.h"
 #include "Rock.h"
 
 #include "Core/Core.h"
@@ -42,10 +40,7 @@ bool PewGame::Initialize()
 	// music by joshuaempyre on freesound.org
 	MEN::g_audioSystem.PlayOneShot("music", true);
 
-	m_scene->Load("Scene.json");
-
-	//auto title = INSTANTIATE(Actor, "Title");
-
+	m_scene->Load("Scenes/SpaceScene.json");
 	m_scene->Initialize();
 
 	
@@ -123,25 +118,8 @@ void PewGame::Update(float deltaTime)
 				auto enemy = INSTANTIATE(Enemy, "Enemy");
 				enemy->Initialize();
 				m_scene->Add(std::move(enemy));
-
-
 			}
 			else {
-// Create Enemy 2
-				//std::unique_ptr<MultiShotEnemy> enemy = std::make_unique<MultiShotEnemy>(MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 1});
-				//enemy->tag = "Enemy";
-				//enemy->m_game = this;
-
-				//std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-				//component->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
-				//enemy->AddComponent(std::move(component));
-
-				//auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
-				//collisionComponent->m_radius = 30.0f;
-				//enemy->AddComponent(std::move(collisionComponent));
-
-				//enemy->Initialize();
-				//m_scene->Add(std::move(enemy));
 
 				
 			}
@@ -151,24 +129,6 @@ void PewGame::Update(float deltaTime)
 	{
 		if (!bossIsPresent)
 		{
-// Create Boss
-			//std::unique_ptr<Boss> boss = std::make_unique<Boss>(10, MEN::randomf(200.0f), MEN::pi, MEN::Transform{{MEN::random(800), MEN::random(900)}, MEN::randomf(), 3});
-			//boss->tag = "Enemy";
-			//boss->m_game = this;
-
-			//std::unique_ptr<MEN::SpriteComponent> component = std::make_unique<MEN::SpriteComponent>();
-			//component->m_texture = GET_RESOURCE(MEN::Texture, "ship.png", MEN::g_renderer);
-			//boss->AddComponent(std::move(component));
-
-			//auto collisionComponent = std::make_unique<MEN::CircleCollisionComponent>();
-			//collisionComponent->m_radius = 30.0f;
-			//boss->AddComponent(std::move(collisionComponent));
-
-			//boss->Initialize();
-			//m_scene->Add(std::move(boss));
-
-			//bossIsPresent = true;
-			//std::cout << "Boss Spawned!" << std::endl;
 		}
 	}
 	break;
@@ -239,5 +199,4 @@ void PewGame::OnPlayerDead(const MEN::Event& event)
 {
 	m_lives--;
 	m_state = eState::PlayerDeadStart;
-
 }

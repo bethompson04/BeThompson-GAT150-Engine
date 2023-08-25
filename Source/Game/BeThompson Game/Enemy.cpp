@@ -16,16 +16,11 @@ namespace MEN
 		Actor::Initialize();
 
 		m_physicsComponent = GetComponent<MEN::PhysicsComponent>();
+
 		auto collisionComponent = GetComponent<MEN::CollisionComponent>();
 		if (collisionComponent)
 		{
-			auto renderComponent = GetComponent<MEN::RenderComponent>();
-			if (renderComponent)
-			{
-				float scale = transform.scale;
-				collisionComponent->m_radius = renderComponent->GetRadius() * scale;
 
-			}
 		}
 		return true;
 	}
@@ -73,7 +68,7 @@ namespace MEN
 		// Decrement Timer
 	}
 
-	void Enemy::OnCollision(Actor* other)
+	void Enemy::OnCollisionEnter(Actor* other)
 	{
 
 		if (other->tag == "Rock")

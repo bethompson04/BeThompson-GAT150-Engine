@@ -21,7 +21,7 @@ namespace MEN
 		virtual bool Initialize() override;
 
 		void Update(float deltaTime) override;
-		void OnCollision(Actor* other) override;
+		void OnCollisionEnter(Actor* other) override;
 
 	protected:
 		float m_speed = 0;
