@@ -5,7 +5,7 @@ namespace MEN
 {
 	CLASS_DEFINITION(Box2DPhysicsComponent)
 
-		bool Box2DPhysicsComponent::Initialize()
+	bool Box2DPhysicsComponent::Initialize()
 	{
 		m_body = PhysicsSystem::Instance().CreateBody(m_owner->transform.position, m_owner->transform.rotation, data);
 		m_body->SetGravityScale(data.gravityScale);

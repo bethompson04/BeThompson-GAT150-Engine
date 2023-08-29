@@ -36,19 +36,17 @@ int main(int argc, char* argv[])
 	MEN::setFilePath("Assets/Platformer");
 
 	MEN::g_renderer.Initialize();
-	MEN::g_renderer.CreateWindow("CSC196", 800, 600);
+	MEN::g_renderer.CreateWindow("GAT150", 800, 600);
 
 	MEN::g_inputSystem.Initialize();
 	MEN::g_audioSystem.Initialize();
 
+	// PhysicsSystem
+	MEN::PhysicsSystem::Instance().Initialize();
+
 	unique_ptr<PlatformGame> game = make_unique<PlatformGame>();
 	game->Initialize();
 
-	MEN::vec2 v(5, 5);
-	v.Normalize();
-
-	// PhysicsSystem
-	MEN::PhysicsSystem::Instance().Initialize();
 
 	// Main Game Loop
 	bool quit = false;

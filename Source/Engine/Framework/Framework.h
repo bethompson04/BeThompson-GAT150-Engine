@@ -17,6 +17,9 @@
 #include "Components/RenderComponent.h"
 #include "Components/ModelRenderComponent.h"
 #include "Components/SpriteComponent.h"
+#include "Components/SpriteAnimComponent.h"
+
+#include "Components/TilemapComponent.h"
 
 #include "Components/CollisionComponent.h"
 #include "Components/CircleCollisionComponent.h"

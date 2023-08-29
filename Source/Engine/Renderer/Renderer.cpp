@@ -89,9 +89,25 @@ namespace MEN
 		dest.x = (int)(position.x - (size.x * 0.5));
 		dest.y = (int)(position.y - (size.y * 0.5));
 		dest.w = (int)size.x;
+		SDL_RenderCopyEx(this->m_renderer, texture->m_texture, (SDL_Rect*)(&source), & dest, RadiansToDegrees(mx.GetRotation()), nullptr, SDL_FLIP_NONE);
+	}
+
+	void Renderer::DrawTexture(Texture* texture, const Rect& source, const Transform transform, const vec2& origin, bool flipH)
+	{
+		mat3 mx = transform.GetMatrix();
+
+		vec2 position = mx.GetTranslation();
+		vec2 size = vec2{ source.w, source.h } *mx.GetScale();
+
+		SDL_Rect dest;
+		dest.x = (int)(position.x - (size.x * origin.x));
+		dest.y = (int)(position.y - (size.y * origin.y));
+		dest.w = (int)size.x;
 		dest.h = (int)size.y;
 
-		SDL_RenderCopyEx(this->m_renderer, texture->m_texture, (SDL_Rect*)(&source), & dest, RadiansToDegrees(mx.GetRotation()), nullptr, SDL_FLIP_NONE);
+		SDL_Point center{ (int)(size.x * origin.x), (int)(size.y * origin.y) };
+
+		SDL_RenderCopyEx(this->m_renderer, texture->m_texture, (SDL_Rect*)(&source), &dest, RadiansToDegrees(mx.GetRotation()), &center, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 	}
 
 	void Renderer::DrawLine(int x1, int y1, int x2, int y2)

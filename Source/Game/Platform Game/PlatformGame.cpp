@@ -7,7 +7,6 @@
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
 
-
 bool PlatformGame::Initialize()
 {
 	m_scene = std::make_unique<MEN::Scene>();
@@ -15,9 +14,11 @@ bool PlatformGame::Initialize()
 	m_state = eState::Title;
 
 	// music by joshuaempyre on freesound.org
-	MEN::g_audioSystem.PlayOneShot("music", true);
+	//MEN::g_audioSystem.PlayOneShot("music", true);
 
 	m_scene->Load("Scenes/PlatformScene.json");
+	m_scene->Load("Scenes/tilemap.json");
+
 	m_scene->Initialize();
 
 	// Add Events
@@ -36,10 +37,14 @@ void PlatformGame::Update(float deltaTime)
 	switch (m_state)
 	{
 	case PlatformGame::eState::Title:
-		if (MEN::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE))
-		{
-			m_state = eState::StartGame;
-		}
+	{
+		//auto actor = INSTANTIATE(Actor, "Crate");
+		//actor->transform.position = { MEN::random(MEN::g_renderer.GetWidth()), 100 };
+		//actor->Initialize();
+		//m_scene->Add(std::move(actor));
+
+		//m_state = eState::StartGame;
+	}
 		break;
 	case PlatformGame::eState::StartGame:
 	{

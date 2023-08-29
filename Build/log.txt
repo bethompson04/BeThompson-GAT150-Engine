@@ -1,3 +1,6 @@
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Enemy
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Player
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: TilemapComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: TextRenderComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: SpriteComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: SpriteAnimComponent
@@ -9,5 +12,8 @@ INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Fr
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: Actor
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(70) Class Registered: SpriteComponent
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Game\Platform Game\Main.cpp(32) Initializing Engine.
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: Crate
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile01
+INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile02
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Event\EventManager.cpp(17) Event Subscribed: OnAddPoints
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Event\EventManager.cpp(17) Event Subscribed: OnPlayerDead
