@@ -54,8 +54,8 @@ namespace MEN
 		vec2 size = texture->GetSize();
 
 		SDL_Rect dest;
-		dest.x = (int) (xPos - (size.x * 0.5));
-		dest.y = (int) (yPos - (size.y * 0.5));
+		dest.x = (int) (xPos - (size.x * 0.5f));
+		dest.y = (int) (yPos - (size.y * 0.5f));
 		dest.w = (int) size.x;
 		dest.h = (int) size.y;
 

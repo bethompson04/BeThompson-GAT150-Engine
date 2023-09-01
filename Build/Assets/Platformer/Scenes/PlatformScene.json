@@ -3,10 +3,10 @@
 		{
 			"type": "Actor",
 			"name": "Background",
-			"persistent": true,
+			"persistent": false,
 			"transform": {
 				"position": [ 400, 300 ],
-				"scale": 1.0,
+				"scale": 1,
 				"rotation": 0
 			},
 			"components": [
@@ -18,7 +18,44 @@
 		},
 		{
 			"type": "Actor",
+			"name": "Coin2",
+			"tag": "coin",
+			"persistent": true,
+			"transform": {
+				"position": [ 900, 300 ],
+				"scale": 1.0,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteAnimComponent",
+					"defaultSequence": "idle",
+					"sequences": [
+						{
+							"name": "idle",
+							"fps": 12,
+							"numColumns": 8,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 8,
+							"textureName": "Textures/coin.png"
+						}
+					]
+				},
+				{
+					"type": "Box2DPhysicsComponent"
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"restitution": 1
+				}
+
+			]
+		},
+		{
+			"type": "Actor",
 			"name": "Coin",
+			"tag": "coin",
 			"persistent": true,
 			"transform": {
 				"position": [ 400, 300 ],
@@ -82,10 +119,11 @@
 			"name": "Player",
 			"tag": "Player",
 			"persistent": true,
-			"speed": 250,
+			"speed": 50,
+			"maxSpeed": 5,
 			"jump": 10,
 			"transform": {
-				"position": [ 500, 300 ],
+				"position": [ 100, 300 ],
 				"scale": 2.0,
 				"rotation": 0
 			},
@@ -93,6 +131,8 @@
 				{
 					"type": "SpriteAnimComponent",
 					"defaultSequence": "idle",
+					"source": [ 0, 0, 20, 36 ],
+					"origin": [ 0.5, 1 ],
 					"sequences": [
 						{
 							"name": "idle",
@@ -113,6 +153,60 @@
 							"textureName": "Textures/FreeKnight_v1/Colour2/NoOutline/120x80_PNGSheets/_Run.png"
 						},
 						{
+							"name": "roll",
+							"fps": 12,
+							"numColumns": 12,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 12,
+							"textureName": "Textures/FreeKnight_v1/Colour2/NoOutline/120x80_PNGSheets/_Roll.png"
+						},
+						{
+							"name": "jump",
+							"fps": 12,
+							"numColumns": 3,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 3,
+							"textureName": "Textures/FreeKnight_v1/Colour2/NoOutline/120x80_PNGSheets/_Jump.png"
+						},
+						{
+							"name": "fall",
+							"fps": 12,
+							"numColumns": 3,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 3,
+							"textureName": "Textures/FreeKnight_v1/Colour2/NoOutline/120x80_PNGSheets/_Fall.png"
+						},
+						{
+							"name": "attack1",
+							"fps": 12,
+							"numColumns": 4,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 4,
+							"textureName": "Textures/FreeKnight_v1/Colour2/NoOutline/120x80_PNGSheets/_Attack.png"
+						},
+						{
+							"name": "attack2",
+							"fps": 12,
+							"numColumns": 6,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 6,
+							"textureName": "Textures/FreeKnight_v1/Colour2/NoOutline/120x80_PNGSheets/_Attack2.png"
+						},
+						{
+							"name": "hit",
+							"fps": 12,
+							"numColumns": 1,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 1,
+							"textureName": "Textures/FreeKnight_v1/Colour2/NoOutline/120x80_PNGSheets/_Hit.png"
+						},
+						{
 							"name": "death",
 							"fps": 12,
 							"numColumns": 10,
@@ -127,11 +221,12 @@
 				{
 					"type": "Box2DPhysicsComponent",
 					"constrainAngle": true,
-					"gravityScale": 1.0,
+					"gravityScale": 1,
 					"damping": 1
 				},
 				{
-					"type": "Box2DCollisionComponent"
+					"type": "Box2DCollisionComponent",
+					"restitution": 0
 				}
 			]
 		},
@@ -140,10 +235,10 @@
 			"name": "Enemy",
 			"tag": "Enemy",
 			"persistent": true,
-			"speed": 5,
+			"speed": 4,
 			"jump": 1,
 			"transform": {
-				"position": [ 550, 200 ],
+				"position": [ 550, 100 ],
 				"scale": 1.0,
 				"rotation": 0
 			},
@@ -151,55 +246,112 @@
 				{
 					"type": "SpriteAnimComponent",
 					"defaultSequence": "idle",
+					"source": [ 0, 0, 20, 36 ],
+					"origin": [ 0.5, 1 ],
 					"sequences": [
 						{
 							"name": "idle",
+							"fps": 12,
+							"numColumns": 10,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 10,
+							"textureName": "Textures/FreeKnight_v1/Colour21/Outline/120x80_PNGSheets/_Idle.png"
+						},
+						{
+							"name": "run",
+							"fps": 12,
+							"numColumns": 10,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 10,
+							"textureName": "Textures/FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Run.png"
+						},
+						{
+							"name": "roll",
+							"fps": 12,
+							"numColumns": 12,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 12,
+							"textureName": "Textures/FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Roll.png"
+						},
+						{
+							"name": "jump",
+							"fps": 12,
+							"numColumns": 3,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 3,
+							"textureName": "Textures/FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Jump.png"
+						},
+						{
+							"name": "fall",
+							"fps": 12,
+							"numColumns": 3,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 3,
+							"textureName": "Textures/FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Fall.png"
+						},
+						{
+							"name": "attack1",
 							"fps": 12,
 							"numColumns": 4,
 							"numRows": 1,
 							"startFrame": 1,
 							"endFrame": 4,
-							"textureName": "Textures/bat.png"
+							"textureName": "Textures/FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Attack.png"
+						},
+						{
+							"name": "attack2",
+							"fps": 12,
+							"numColumns": 6,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 6,
+							"textureName": "Textures/FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Attack2.png"
+						},
+						{
+							"name": "hit",
+							"fps": 12,
+							"numColumns": 1,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 1,
+							"textureName": "Textures/FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Hit.png"
+						},
+						{
+							"name": "death",
+							"fps": 12,
+							"numColumns": 10,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 10,
+							"textureName": "Textures/FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Death.png"
 						}
+
 					]
 				},
 				{
 					"type": "Box2DPhysicsComponent",
 					"contrainAngle": true,
-					"gravityScale": 0,
-					"damping": 0.9
+					"gravityScale": 1,
+					"damping": 1
 				},
 				{
 					"type": "Box2DCollisionComponent",
-					"restitution": 0.1,
-					"isTrigger":  true
+					"restitution": 0
 				}
 			]
 		},
 		{
 			"type": "Actor",
-			"tag": "Ground",
+			"name": "Score",
+			"persistent": false,
 			"transform": {
-				"position": [400, 520]
-			},
-			"components": [
-				{
-					"type": "Box2DPhysicsComponent",
-					"isDynamic": false
-				},
-				{
-					"type": "Box2DCollisionComponent",
-					"size": [ 600, 20 ]
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "Title",
-			"persistent": true,
-			"transform": {
-				"position": [ 400, 100 ],
-				"scale": 2.0,
+				"position": [ 60, 15 ],
+				"scale": 1.0,
 				"rotation": 0.0
 			},
 			"components": [
@@ -207,7 +359,7 @@
 					"type": "TextRenderComponent",
 					"fontName": "Fonts/perfectdrown.ttf",
 					"fontSize": 24,
-					"text": "BRIGHT SPIRITS",
+					"text": "Score: ",
 					"color": [ 0, 0, 0, 1 ]
 				}
 			]

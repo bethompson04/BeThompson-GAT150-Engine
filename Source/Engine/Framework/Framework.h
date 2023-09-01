@@ -20,6 +20,7 @@
 #include "Components/SpriteAnimComponent.h"
 
 #include "Components/TilemapComponent.h"
+#include "Components/TextRenderComponent.h"
 
 #include "Components/CollisionComponent.h"
 #include "Components/CircleCollisionComponent.h"

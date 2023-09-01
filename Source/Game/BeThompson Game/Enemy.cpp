@@ -37,8 +37,6 @@ namespace MEN
 
 			float turnAngle = MEN::vec2::SignedAngle(forward, direction.Normalized());
 
-			//transform.rotation += turnAngle * 2 * deltaTime;
-
 			m_physicsComponent->ApplyTorque(turnAngle);
 
 			if (std::fabs(turnAngle) < MEN::DegreesToRadians(30.0f))

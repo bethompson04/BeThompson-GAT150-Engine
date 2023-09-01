@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 	MEN::setFilePath("Assets/Platformer");
 
 	MEN::g_renderer.Initialize();
-	MEN::g_renderer.CreateWindow("GAT150", 800, 600);
+	MEN::g_renderer.CreateWindow("GAT150", 960, 720);
 
 	MEN::g_inputSystem.Initialize();
 	MEN::g_audioSystem.Initialize();
@@ -64,19 +64,6 @@ int main(int argc, char* argv[])
 
 		MEN::g_particleSystem.Update(MEN::g_time.GetDeltaTime());
 		MEN::PhysicsSystem::Instance().Update(MEN::g_time.GetDeltaTime());
-
-		if (MEN::g_inputSystem.GetMouseButtonDown(0))
-		{
-			std::cout << "mouse pressed" << endl;
-			MEN::vec2 pos = MEN::g_inputSystem.GetMousePosition();
-			std::cout << pos.x << " " << pos.y << endl;
-		}
-
-		if (MEN::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) && !MEN::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE))
-		{
-			MEN::g_audioSystem.PlayOneShot("pew");
-			std::cout << "pew pew" << endl;
-		}
 
 		game->Update(MEN::g_time.GetDeltaTime());
 		MEN::g_particleSystem.Update(MEN::g_time.GetDeltaTime());

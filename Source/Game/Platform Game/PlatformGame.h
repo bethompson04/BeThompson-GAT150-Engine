@@ -37,5 +37,7 @@ private:
 	float m_spawnTimer = 0;
 	float m_spawnTime = 3.0f;
 
+	int lives = 3;
+
 	float m_stateTimer = 0;
 };

@@ -29,29 +29,32 @@ namespace MEN
 	{
 		Actor::Update(deltaTime);
 
+		bool onGround = (groundCount < 0);
+		vec2 velocity = m_physicsComponent->m_velocity;
+
 		MEN::vec2 forward = MEN::vec2{ 0 , -1 }.Rotate(transform.rotation);
 		Player* player = m_scene->GetActor<Player>();
 		if (player)
 		{
 			MEN::Vector2 direction = player->transform.position - transform.position;
-			m_physicsComponent->ApplyForce(direction.Normalized() * speed);
+			velocity.x += speed * ((onGround) ? 1 : 0.5f) * deltaTime;
+			velocity.x = Clamp(velocity.x, -maxSpeed, maxSpeed);
+			m_physicsComponent->SetVelocity(velocity);
 		}
 
 
 		//transform.position += forward * m_speed * MEN::g_time.GetDeltaTime();
-
-		transform.position.x = MEN::Wrap(transform.position.x, (float)MEN::g_renderer.GetWidth());
-		transform.position.y = MEN::Wrap(transform.position.y, (float)MEN::g_renderer.GetHeight());
 
 	}
 
 	void Enemy::OnCollisionEnter(Actor* other)
 	{
 
-		if (other->tag == "Enemy")
+		if (other->tag == "Player")
 		{
 			this->m_destroyed = true;
 			other->m_destroyed = true;
+			MEN::EventManager::Instance().DispatchEvent("OnAddPoints", 100);
 			MEN::EventManager::Instance().DispatchEvent("OnEnemyDead", 0);
 		}
 

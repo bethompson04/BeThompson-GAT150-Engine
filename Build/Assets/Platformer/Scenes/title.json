@@ -1,0 +1,58 @@
+{
+  "actors": [
+    {
+      "type": "Actor",
+      "name": "Background",
+      "persistent": false,
+      "transform": {
+        "position": [ 400, 300 ],
+        "scale": 1,
+        "rotation": 0
+      },
+      "components": [
+        {
+          "type": "SpriteComponent",
+          "textureName": "Textures/titleScreen.png"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Title",
+      "persistent": false,
+      "transform": {
+        "position": [ 430, 360 ],
+        "scale": 3.0,
+        "rotation": 0.0
+      },
+      "components": [
+        {
+          "type": "TextRenderComponent",
+          "fontName": "Fonts/perfectdrown.ttf",
+          "fontSize": 24,
+          "text": "BRIGHT SPIRITS",
+          "color": [ 0, 0, 0, 1 ]
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Title",
+      "persistent": false,
+      "transform": {
+        "position": [ 430, 700 ],
+        "scale": 1.0,
+        "rotation": 0.0
+      },
+      "components": [
+        {
+          "type": "TextRenderComponent",
+          "fontName": "Fonts/perfectdrown.ttf",
+          "fontSize": 24,
+          "text": "Press SPACE to Start",
+          "color": [ 0, 0, 0, 1 ]
+        }
+      ]
+    }
+  ]
+}

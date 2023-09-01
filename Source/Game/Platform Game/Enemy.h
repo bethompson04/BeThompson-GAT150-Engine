@@ -22,7 +22,12 @@ namespace MEN
 		void OnCollisionExit(Actor* other) override;
 
 	private:
+		int attackType = 1;
+		float attackTimer = 0;
 		float speed = 0;
+		float direction = 0;
+		float tempDir = 0;
+		float maxSpeed = 0;
 		float jump = 0;
 		int groundCount = 0;
 

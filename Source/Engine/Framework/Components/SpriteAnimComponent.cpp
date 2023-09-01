@@ -11,8 +11,12 @@ namespace MEN
 	{
 		SpriteComponent::Initialize();
 
-		SetSequence(defaultSequenceName);
-		UpdateSource();
+		SetSequence(defaultSequenceName, false);
+
+		if (source.w == 0 && source.h == 0)
+		{
+			UpdateSource();
+		}
 
 		return true;
 	}
@@ -33,7 +37,7 @@ namespace MEN
 		UpdateSource();
 	}
 
-	void SpriteAnimComponent::SetSequence(const std::string& name)
+	void SpriteAnimComponent::SetSequence(const std::string& name, bool update)
 	{
 		//Prevent setting seqeuence again
 		if (m_sequence && m_sequence->name == name) return;
@@ -50,6 +54,8 @@ namespace MEN
 			// reset frame information
 			frame = m_sequence->startFrame;
 			frameTimer = 1.0f / m_sequence->fps;
+
+			if (update) UpdateSource();
 		}
 	}
 
