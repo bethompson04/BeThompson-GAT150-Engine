@@ -21,8 +21,8 @@
       "name": "Title",
       "persistent": false,
       "transform": {
-        "position": [ 430, 360 ],
-        "scale": 3.0,
+        "position": [ 460, 360 ],
+        "scale": 2.5,
         "rotation": 0.0
       },
       "components": [
@@ -31,7 +31,7 @@
           "fontName": "Fonts/perfectdrown.ttf",
           "fontSize": 24,
           "text": "BRIGHT SPIRITS",
-          "color": [ 0, 0, 0, 1 ]
+          "color": [ 1, 1, 1, 1 ]
         }
       ]
     },
@@ -50,7 +50,7 @@
           "fontName": "Fonts/perfectdrown.ttf",
           "fontSize": 24,
           "text": "Press SPACE to Start",
-          "color": [ 0, 0, 0, 1 ]
+          "color": [ 1, 1, 1, 1 ]
         }
       ]
     }

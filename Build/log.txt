@@ -50,27 +50,3 @@ INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Fr
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar22
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar23
 INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: spike
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: Crate
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Renderer\Texture.cpp(32) Image failed to load
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Resource\ResourceManager.h(38) Could not create resource: Textures/FreeKnight_v1/Colour21/Outline/120x80_PNGSheets/_Idle.png
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_floor1
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_ground1
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar1
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar2
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar3
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar21
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar22
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar23
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: spike
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: Crate
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Renderer\Texture.cpp(32) Image failed to load
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Resource\ResourceManager.h(38) Could not create resource: Textures/FreeKnight_v1/Colour21/Outline/120x80_PNGSheets/_Idle.png
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_floor1
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_ground1
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar1
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar2
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar3
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar21
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar22
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: tile_pillar23
-INFO: C:\Users\bethompson\source\repos\BeThompson GAT150 Engine\Source\Engine\Framework\Factory.h(78) Prototype Class Registered: spike
